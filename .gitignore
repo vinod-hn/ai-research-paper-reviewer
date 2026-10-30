@@ -1,0 +1,76 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# =========================
+# Testing
+# =========================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+
+# =========================
+# Environment
+# =========================
+.env
+.env.local
+.env.*.local
+.venv/
+venv/
+ENV/
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Project Specific
+# =========================
+# Keep metadata but ignore large files
+data/pdfs/*.pdf
+data/logs/*.log
+
+# Exported files (regeneratable)
+data/literature_review.md
+data/literature_review.docx
+data/literature_review.pdf
+
+# Temporary files
+*.tmp
+*.temp

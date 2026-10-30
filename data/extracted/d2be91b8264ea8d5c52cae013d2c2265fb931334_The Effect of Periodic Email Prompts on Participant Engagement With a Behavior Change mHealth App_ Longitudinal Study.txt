@@ -1,0 +1,1223 @@
+Original Paper
+The Effect of Periodic Email Prompts on Participant Engagement
+With a Behavior Change mHealth App: Longitudinal Study
+Elena Agachi1*, MSc; Tammo H A Bijmolt1*, Prof Dr; Koert van Ittersum1*, Prof Dr; Jochen O Mierau2*, Prof Dr
+1Department of Marketing, Faculty of Economics and Business, University of Groningen, Groningen, Netherlands
+2Department of Economics, Econometrics & Finance, Faculty of Economics and Business, University of Groningen, Groningen, Netherlands
+*all authors contributed equally
+Corresponding Author:
+Elena Agachi, MSc
+Department of Marketing
+Faculty of Economics and Business
+University of Groningen
+Nettelbosje 2
+Groningen, 9747 AE
+Netherlands
+Phone: 31 50 363 3686
+Email: e.agachi@rug.nl
+Abstract
+Background: Following the need for the prevention of noncommunicable diseases, mobile health (mHealth) apps are increasingly
+used for promoting lifestyle behavior changes. Although mHealth apps have the potential to reach all population segments,
+providing accessible and personalized services, their effectiveness is often limited by low participant engagement and high attrition
+rates.
+Objective: This study concerns a large-scale, open-access mHealth app, based in the Netherlands, focused on improving the
+lifestyle behaviors of its participants. The study examines whether periodic email prompts increased participant engagement with
+the mHealth app and how this effect evolved over time. Points gained from the activities in the app were used as an objective
+measure of participant engagement with the program. The activities considered were physical workouts tracked through the
+mHealth app and interactions with the web-based coach.
+Methods: The data analyzed covered 22,797 unique participants over a period of 78 weeks. A hidden Markov model (HMM)
+was used for disentangling the overtime effects of periodic email prompts on participant engagement with the mHealth app. The
+HMM accounted for transitions between latent activity states, which generated the observed measure of points received in a
+week.
+Results: The HMM indicated that, on average, 70% (15,958/22,797) of the participants were in the inactivity state, gaining 0
+points in total per week; 18% (4103/22,797) of the participants were in the average activity state, gaining 27 points per week;
+and 12% (2736/22,797) of the participants were in the high activity state, gaining 182 points per week. Receiving and opening a
+generic email was associated with a 3 percentage point increase in the likelihood of becoming active in that week, compared with
+the weeks when no email was received. Examining detailed email categories revealed that the participants were more likely to
+increase their activity level following emails that were in line with the program’s goal, such as emails regarding health campaigns,
+while being resistant to emails that deviated from the program’s goal, such as emails regarding special deals.
+Conclusions: Participant engagement with a behavior change mHealth app can be positively influenced by email prompts, albeit
+to a limited extent. Given the relatively low costs associated with emails and the high population reach that mHealth apps can
+achieve, such instruments can be a cost-effective means of increasing participant engagement in the stride toward improving
+program effectiveness.
+(JMIR Mhealth Uhealth 2023;11:e43033) doi: 10.2196/43033
+KEYWORDS
+mobile health; behavior change; mobile app; digital health; engagement; retention; email; hidden Markov model
+JMIR Mhealth Uhealth 2023 | vol. 11 | e43033 | p. 1
+https://mhealth.jmir.org/2023/1/e43033
+(page number not for citation purposes)
+Agachi et al
+JMIR MHEALTH AND UHEALTH
+XSL•FO
+RenderX
+
+Introduction
+Background
+Following the increasing need for the prevention of
+noncommunicable diseases [1], behavior change programs have
+emerged as a widely used support tool for health interventions
+aimed at improving lifestyle behaviors [2]. Digital behavior
+change programs have the ability to reach a larger population
+subset at relatively lower costs than their offline counterparts
+[3,4] while allowing for tailored material based on individual
+interactions [5].
+In recent years, mobile health (mHealth) apps have gained
+traction as an increasingly preferred method of delivering digital
+behavior change interventions [4] by further facilitating access
+for and interaction with participants [6]. An additional benefit
+of mHealth apps is their ability to also involve the population
+segment with lower socioeconomic conditions, which generally
+shows less interest in preventive health interventions [7-9].
+Although digital behavior change programs, especially mHealth
+apps, are promising tools for improving lifestyle behaviors, in
+practice, these programs often show low participant engagement
+(defined as “the extent of usage of the digital behavior change
+intervention” [10]) and high attrition rates [11-13]. One of the
+main reasons underlying this phenomenon is the passive nature
+of behavior change programs, where participants need to act by
+themselves to benefit [14]. Although higher engagement is
+crucial for achieving effectiveness of mHealth apps [15-18],
+inducing higher participant engagement over time is a
+challenging task [12,19], which requires proactive efforts from
+the program providers [11,20,21].
+Objective
+Periodic prompts via emails have been examined as a potential
+tool that can boost participant engagement with behavior change
+mHealth apps [22,23]. However, most studies examining the
+means to increase engagement with an mHealth app are based
+on small sample sizes and short time spans [24,25]. In a
+literature review including approximately 35 mHealth apps
+aimed at increasing physical activity, the sample size varied
+between 8 and 700 participants, with an average study duration
+of 8 weeks [26]. Given that small sample sizes and especially
+short time spans of most interventions can lead to an
+overestimation of the intervention effects [25,27], it is essential
+to examine whether periodic prompts via emails can impact
+participant engagement with a behavior change mHealth app
+within a longer-term, larger-scale, noncontrolled setup [7,28,29].
+This study relied on a large-scale (more than 20,000
+participants), open-access mHealth app focused on improving
+the lifestyle behaviors and wellness of its participants. The
+analysis in this study used a hidden Markov model (HMM) to
+examine whether periodic email prompts were able to increase
+participant engagement with the mHealth app and how this
+effect evolved over time. By investigating the effect of prompts
+on continued engagement with the mHealth app, this study
+hoped to assess (1) whether periodic prompts via email can be
+a viable tool for increasing participant engagement, (2) how the
+impact of periodic prompts on engagement evolved over time,
+and (3) how the observed effects differed among participant
+subgroups.
+Methods
+Study Sample
+This study was based on data from the mobile app of a digital
+behavior change program operated in the Netherlands. The
+program’s goal was to improve the wellness and lifestyle
+behaviors of its participants by promoting physical activity,
+healthy eating habits, social activity, mental health, good sleep
+habits, and minimized stress. The mobile app was introduced
+in October 2017, providing functions such as entering or
+recording physical activities, reading articles, setting goals,
+including friends in challenges, answering health questions,
+being assisted by a web-based coach, and forming a daily
+“fit-score.” On the basis of the individual activities in the mobile
+app, participants gain points, which can be used to acquire
+specific products, vouchers for various services, or make charity
+contributions.
+The data analyzed in this study spanned from January 2018,
+when the mobile app of the health program reached full
+functionality, to July 2019, when the observation window ended.
+Data were collected in 2018 and 2019 and analyzed in 2021 and
+2022 within a longitudinal, nonexperimental study design. The
+analyzed data had a weekly frequency, covering 78 weeks and
+including 22,797 unique participants who enrolled by themselves
+in the mobile app at any time during the observation window.
+Of the 33,825 participants who used the mobile app, 22,797
+(67.4%) were included, having at least 1 activity during the
+period between the mobile app introduction and the end of the
+observation window, indicating an awareness of the mobile
+app’s functionality. All program participants were aged between
+18 and 80 years and were residents of the Netherlands.
+Enrollment in the mHealth app was open and free, and all the
+participants involved in this study provided their voluntary and
+informed consent.
+Ethics Approval
+Ethics approval for this research project based on the health
+program was obtained from the institutional research board of
+the 
+University 
+of 
+Groningen 
+(approval 
+number
+RDMPFEB20180831-7309).
+Measures
+Participant Engagement
+The main objective of a behavior change mHealth app is to
+improve the lifestyle behaviors of its participants. Achieving
+effectiveness in behavior change is highly linked to the degree
+to which participants engage with the app; only when
+participants interact with the program and continue use can it
+have an impact on their behavior [15,16].
+Participant engagement has been defined as “the extent of usage
+of the digital behavior change intervention” [10], being separated
+into temporal patterns—frequency and duration, and
+depth—specific intervention content use [30,31]. Participant
+engagement can be assessed as a subjective measure (ie,
+JMIR Mhealth Uhealth 2023 | vol. 11 | e43033 | p. 2
+https://mhealth.jmir.org/2023/1/e43033
+(page number not for citation purposes)
+Agachi et al
+JMIR MHEALTH AND UHEALTH
+XSL•FO
+RenderX
+
+self-reported by participants) or an objective measure (ie,
+measured by the program) [10].
+The mHealth app analyzed in this study provided several
+activities that the participants could perform. For every activity
+completed, the participants gained points, which varied based
+on the activity type and duration. Gained points were used as a
+measure of the activity level of the participants in the mHealth
+app, which were calculated weekly throughout the observation
+window. Consequently, this participant engagement measure
+was objective rather than self-reported, which had the additional
+benefit of being more robust against reporting bias [32].
+The 2 types of activities included in the participant engagement
+measure were physical activities and web-based coach activities,
+both of which the participants could access via the mHealth
+app. Physical activities were activities recorded in the health
+program with the use of GPS, such as walking, cycling, and
+running. Web-based coach activities were the interactions that
+the participants had with regular messages sent via the chat
+environment programmed by the providers of the mHealth app.
+The messages in the chat environment were linked to physical
+activities, health goals that the participants selected, challenges
+that they joined, or overall health behavior information. For
+every question answered, the participants received a fixed
+number of points. Table 1 presents the activity types included
+in the mHealth app, with the associated number of points.
+Table 1. Activity types and number of points gained.
+Number of points
+Activity type
+1 point gained for any question answered
+Web-based coach
+From 1 point to 696 points, depending on activity duration (mean 17.25, SD 24.46 points)
+GPS recorded activity: walking
+From 1 point to 699 points, depending on activity duration (mean 21.37, SD 38.36 points)
+GPS recorded activity: cycling
+From 1 point to 695 points, depending on activity duration (mean 39.93, SD 33.06 points)
+GPS recorded activity: running
+Periodic Email Prompts
+In general, mHealth apps suffer from low participant
+engagement and high dropout rates [33,34]. Capturing the
+attention of the participants in an attempt to stimulate their
+active involvement is crucial for program success [20]. Periodic
+email prompts are often used as tools for improving participant
+engagement, with mixed results. Although some studies
+estimated a positive impact of email prompts on participant
+engagement [23,28,35], additional research is required in this
+area [36], with a special focus on overtime effects [10,22].
+In this study, we examined the ability of periodic email prompts
+to improve participant engagement with the mHealth app by
+measuring the effect of emails on transitions between activity
+states. For every email sent, a randomly selected subset of the
+participants did not receive the email in question, which served
+as the control group for that particular email. The emails sent
+to the participants of the app were either generic or targeted.
+The generic emails were sent to all the participants in the same
+format, independent of their current activity level. The targeted
+emails were sent out in different versions, depending on the
+participants’ activity level (low activity or high activity);
+however, it was not possible to identify which participant
+received which email version. The targeted emails could belong
+to one of the following categories: welcoming emails,
+reactivation emails, recruitment emails, newsletters, health
+campaigns, and special offers.
+To correct for any potential effect of targeting, generic emails
+were the main measure used in this study. The emails included
+in this category had topics such as welcoming participants to
+the program, sharing general healthy lifestyle information (at
+regular intervals), presenting topic-specific health information
+(eg, healthy nutrition and sleep), inviting participants to engage
+in activities, and presenting special deals in the web shop.
+To measure the effect of email prompts, we distinguished
+between 3 situations: not having received an email, having
+received an email but not having opened it, and having received
+an email and opened it. Section 2 in Multimedia Appendix 1
+describes in detail the emails’ content and their categorization.
+Between January 2018 and July 2019, the proportion of
+participants who received a generic email varied between 0.14%
+(13/9596 participants in the third week of March 2018) and
+39.73% (8943/22,508 participants in the second week of May
+2019). The proportion of participants who opened the generic
+email when they received it varied between 26.65% (271/1017
+participants in the third week of November 2018) and 76.1%
+(159/209 participants in the first week of January 2018). Across
+the weeks in the observation period, the average proportion of
+participants who received a generic email in a week was 6.6%,
+the average proportion of participants who opened a generic
+email in a week was 3.5%, and the average proportion of
+participants who opened a generic email when they received
+one was 60.5%.
+Figure 1 displays the evolution of the generic emails and
+participant engagement over the weeks of the observation
+window, showing the proportion of participants who received
+and opened a generic email and the proportion of participants
+who were active during that week (having gained at least 1
+point). Figure 1 implies great variability in both measures,
+highlighting the need to analyze the connection between email
+prompts and participant engagement in a dynamic manner.
+JMIR Mhealth Uhealth 2023 | vol. 11 | e43033 | p. 3
+https://mhealth.jmir.org/2023/1/e43033
+(page number not for citation purposes)
+Agachi et al
+JMIR MHEALTH AND UHEALTH
+XSL•FO
+RenderX
+
+Figure 1. The proportion of active participants (at least 1 point gained) and the proportion of participants who received and opened a generic email.
+To control for the effect of the individual characteristics of the
+program participants on their engagement with the behavior
+change mHealth app [10], gender, age, and neighborhood
+socioeconomic status (NSES) [37] quintiles were included in
+the analysis as additional covariates. The NSES quintiles
+measure follows the methodology outlined in Dekker et al [38],
+being calculated using nonlinear iterative partial least squares
+principal component analysis on the following characteristics
+given on a postcode level: average income, average property
+value, subsidized renting, share of high-income households,
+share of owner-occupied properties, share of low-income
+households, share of population receiving unemployment
+benefits, share of people receiving disability benefits, and share
+of people receiving short-term unemployment benefits. A lower
+NSES quintile corresponds to lower levels of socioeconomic
+conditions. In addition, to measure whether early adopters of
+the mHealth app showed higher engagement [39], we included
+the additional measure of early adoption, which corresponded
+to the participants who enrolled in the behavior change mHealth
+app during its first month of existence. In total, 19.06%
+(4345/22,797) of the mHealth app participants were early
+adopters.
+Statistical Analysis
+In this study, we used the number of points gained per week to
+measure engagement, which reflected the level of activity of a
+participant in the mHealth app. To model the changing levels
+of activity over time, an HMM was used, where a participant
+had a specific level of activity each week (latent state) and could
+transition between the activity states from week to week [40,41].
+Using HMMs allows for the disentanglement of the dynamics
+of participant behavior over time and the analysis of how
+specific actions can influence these behaviors [42]. Moreover,
+the HMM model is preferred because such a latent approach
+allows for the incorporation of the high dropout and inactivity
+rates that are specific to behavior change programs [43,44]. To
+understand the drivers of the dynamics of state transitions,
+nonhomogeneous Markov modeling was used, which allows
+the transition probabilities to depend on time-varying covariates
+[45].
+A generic HMM is defined as shown in Figure 2, where Xt is
+the latent activity state at time t, with t ranging from 0 to T (T
+being the last measurement week); A is the state transition
+probability; B is the response probability matrix; and Ot contains
+the observations in the response vector. The Markov process,
+being separated by the dashed line, was not observed. Instead,
+only the observations Ot were known; in this study, these were
+the number of points gained in a week.
+Figure 2. A generic hidden Markov model representation. A: state transition probability; B: response probability matrix; O: observations in the response
+vector; T: last measurement week.
+The HMM depicted in Figure 2 consists of 3 main elements (as
+shown below):
+The hidden Markov model formulation includes:
+1.
+Initial state probability P(X0): the probability that
+participant i is in state X at time 0.
+2.
+Transition probability P(Xt|Xt-1): the probability that
+participant i is in state X at time t, given the state
+membership at time t-1.
+3.
+Response probability P(Oit|Xt): the probability that
+participant i displays activity level O at time t, given the
+state membership X at time t.
+JMIR Mhealth Uhealth 2023 | vol. 11 | e43033 | p. 4
+https://mhealth.jmir.org/2023/1/e43033
+(page number not for citation purposes)
+Agachi et al
+JMIR MHEALTH AND UHEALTH
+XSL•FO
+RenderX
+
+In the setup of this study, the unobserved states that a participant
+belonged to were activity states, generating the observed
+measures of points received in a week from differing activities
+performed in the mHealth app. The initial state distribution
+reflected the starting state that a participant belonged to at their
+moment of joining the mHealth app, which depended on the
+time-constant covariates that reflected the participant’s
+background (age, gender, NSES, and early adopter). The
+transitions between the activity states reflected the variability
+in the participants’ behaviors between weeks, which were
+allowed to depend on both time-constant covariates (age, gender,
+NSES, and early adopter) and time-varying covariates (the email
+prompts and time). Including the email prompts in the transition
+probability model allowed for the examination of the impact of
+emails on changes in the activity levels of a participant.
+When using the HMM for general inference, traditional model
+selection criteria, such as Akaike information criterion or
+Bayesian information criterion, often lead to the selection of
+much larger numbers of states than expected a priori [46-48].
+The reason for this is that the neglected data in the model
+formulation are absorbed into the additional model states, which
+do not possess a clear interpretation anymore [49]. A
+recommended approach for dealing with this uncertainty is
+analyzing a prespecified number of latent states. In this study,
+following the goal of differentiating between activity states
+while prioritizing interpretability, the estimated HMM contained
+3 states: inactivity, average activity, and high activity. For the
+estimation of the model, the Latent GOLD software (Statistical
+Innovations Inc) was used. The Latent GOLD software supports
+the analysis of latent class models such as HMMs, with the
+parameter estimates being computed based on a combination
+of expectation-maximization and Newton-Raphson iterations,
+where the E step computations use a forward-backward
+recursion scheme [50].
+Results
+Characteristics of the Participants
+This study analyzed 22,797 participants between January 2018
+and July 2019 for a total of 78 weeks. The mHealth app analyzed
+being an open-access platform, the participants could enroll at
+any time within the observation window. Table 2 outlines the
+characteristics of the mHealth app participants. On average,
+each participant was observed for 50.8 weeks, resulting in a
+total of 1,129,706 observation points. Every week,
+approximately one-third of the study population was active,
+gaining an average of 28 points weekly. A total of 62.82%
+(14,321/22,797) of the analyzed participants were women, with
+the most represented age group being between 37 and 46 years
+and the highest proportion of participants belonging to the
+second socioeconomic quintile.
+Table 2. Characteristics of the study participants (N=22,797).
+Values
+Key attributes
+1,129,706
+Total observations, n
+22,797
+Participants, n
+50.8 (28.7)
+Number of weeks in the mobile app, mean (SD)
+28.0 (78.8)
+Number of points received weekly, mean (SD)
+31.1 (6.3)
+Proportion of active participants per week (%), mean (SD)
+4345 (19.06)
+Early mobile app adopters, n (%)
+14,321 (62.82)
+Female participants, n (%)
+Participants per age group (years), n (%)
+1408 (6.18)
+18-26
+5282 (23.17)
+27-36
+5406 (23.71)
+37-46
+5179 (22.72)
+47-56
+3402 (14.92)
+57-66
+2120 (9.3)
+67-80
+Participants per NSESa quintile (from the lowest to the highest socioeconomic conditions), n (%)
+4675 (20.51)
+First
+6303 (27.65)
+Second
+4662 (20.45)
+Third
+3611 (15.84)
+Fourth
+3546 (15.55)
+Fifth
+aNSES: neighborhood socioeconomic status.
+JMIR Mhealth Uhealth 2023 | vol. 11 | e43033 | p. 5
+https://mhealth.jmir.org/2023/1/e43033
+(page number not for citation purposes)
+Agachi et al
+JMIR MHEALTH AND UHEALTH
+XSL•FO
+RenderX
+
+Model Estimation Results
+HMM States and Transitions
+Estimating the HMM with 3 states resulted in the outcomes
+presented in Tables 3 and 4. The 3 states identified by the HMM
+were labeled as the inactivity state, average activity state, and
+high activity state. On average, across the weeks of the
+observation period, 70% (15,958/22,797) of the participants
+were in the inactivity state, gaining 0 points weekly; 18%
+(4103/22,797) of the participants were in the average activity
+state, gaining 27 points weekly; and 12% (2736/22,797) of the
+participants were in the high activity state, gaining 182 points
+weekly.
+Table 3. Hidden Markov model estimation results: average latent states.
+State
+3: high activity
+2: average activity
+1: inactivity
+12
+18
+70
+Average state size (%)
+182
+27
+0
+Points received, n
+Table 4. Hidden Markov model estimation results: average transition probability matrixa.
+State (tb)
+State (t-1)
+3
+2
+1
+0.02
+0.07
+0.91
+1
+0.05
+0.64
+0.31
+2
+0.82
+0.09
+0.09
+3
+aSection 3 in Multimedia Appendix 1 presents detailed model fit criteria and parameter estimates for the hidden Markov model. All the parameter
+estimates were statistically significant at the 99% confidence level.
+bt: time point.
+The estimated transition matrix (shown in Table 4) reflects the
+probability of switching between the 3 states across weeks. On
+average, the inactivity and high activity states were most
+persistent, for example, a participant who was in the high
+activity state during week 1 was, on average, 82% likely to
+remain in that state during week 2. The highest probability of
+decrease in activity was associated with the transition from the
+average activity state to the inactivity state: a participant who
+was in the average activity state during week 1 was 31% likely
+to transition into the inactivity state during week 2.
+HMM Effects of Generic Email Prompts
+The relationship of interest in this study is the connection
+between generic emails and participant engagement. Table 5
+shows the estimated posterior probability means of the state
+distribution depending on whether the participants received and
+opened a generic email. The posterior probability means indicate
+the estimated probability that a participant was in each state,
+given the email prompt. The estimates show that a participant
+who did not receive a generic email was 68% likely to be in the
+inactivity state, whereas a participant who received and opened
+a generic email was 67% likely to be in the inactivity state (a
+decrease of 1 percentage point). In addition, the participants
+who received but did not open a generic email were estimated
+to have a 11 percentage point higher likelihood of inactivity
+than those who did not receive an email.
+Table 5. Hidden Markov model estimation results: posterior probability means associated with the generic email promptsa.
+3: high activity
+2: average activity
+1: inactivity
+0.13
+0.19
+0.68
+No generic email received
+0.06
+0.14
+0.79
+Generic email received but not opened
+0.11
+0.22
+0.67
+Generic email received and opened
+aSection 3 in Multimedia Appendix 1 presents detailed model fit criteria and parameter estimates for the hidden Markov model. All the parameter
+estimates were statistically significant at the 99% confidence level.
+As the HMM allowed for the dynamics of switching between
+states, Table 6 shows the estimated transition matrices depending
+on the generic email. On the basis of the estimated transition
+matrices, the likelihood that a participant remained in the
+inactivity state between weeks t and t+1 was 91% when no
+email was received, as opposed to 88% when a generic email
+was received and opened. This translates into a 3 percentage
+point decrease in the probability of remaining inactive or,
+alternatively, a 3 percentage point increase in the probability of
+moving into one of the activity states after receiving and opening
+a generic email.
+JMIR Mhealth Uhealth 2023 | vol. 11 | e43033 | p. 6
+https://mhealth.jmir.org/2023/1/e43033
+(page number not for citation purposes)
+Agachi et al
+JMIR MHEALTH AND UHEALTH
+XSL•FO
+RenderX
+
+Table 6. Hidden Markov model estimation results: transition matrices accounting for generic email prompts.
+State (t)
+State (ta-1)
+Transition matrix: generic email received
+and opened
+Transition matrix: generic email received
+but not opened
+Transition matrix: no generic email received
+3
+2
+1
+3
+2
+1
+3
+2
+1
+0.02
+0.10
+0.88
+0.01
+0.06
+0.93
+0.02
+0.07
+0.91
+1
+0.04
+0.66
+0.29
+0.03
+0.56
+0.41
+0.05
+0.64
+0.31
+2
+0.82
+0.10
+0.08
+0.76
+0.13
+0.11
+0.82
+0.09
+0.09
+3
+at: time point.
+HMM Effects of Detailed Email Prompts
+To examine whether the effect of the email prompts differed
+based on email type, the estimated posterior probability means
+of the state distribution was formulated depending on whether
+the participants received and opened an email using detailed
+email categories (Table 7). On the basis of the posterior
+probability means shown in Table 7, both positive and negative
+effects could be identified, where a positive effect reflects an
+increase in participant activity linked to receiving and opening
+an email, whereas a negative effect reflects the opposite. A
+positive effect was associated with opening a welcome email
+(decreased likelihood of inactivity by 12 percentage points) and
+opening a health campaign email (decreased likelihood of
+inactivity by 3 percentage points). A negative effect was
+associated with opening a newsletter or special offer email
+(increased likelihood of inactivity by 2 percentage points) and
+opening a reactivation email (increased likelihood of inactivity
+by 5 percentage points).
+Table 7. Hidden Markov model estimation results: posterior probability means accounting for detailed email promptsa.
+3: high activity
+2: average activity
+1: inactivity
+0.13
+0.19
+0.68
+No email received
+Welcome email
+0.06
+0.24
+0.70
+Email received but not opened
+0.10
+0.34
+0.56
+Email received and opened
+Reactivation email
+0.04
+0.11
+0.85
+Email received but not opened
+0.09
+0.18
+0.73
+Email received and opened
+Newsletter email
+0.07
+0.13
+0.80
+Email received but not opened
+0.12
+0.18
+0.70
+Email received and opened
+Health campaign email
+0.06
+0.19
+0.75
+Email received but not opened
+0.09
+0.26
+0.65
+Email received and opened
+Special offer email
+0.05
+0.12
+0.83
+Email received but not opened
+0.11
+0.19
+0.70
+Email received and opened
+aSection 3 in Multimedia Appendix 1 presents detailed model fit criteria and parameter estimates for the hidden Markov model. All parameter estimates
+were statistically significant at the 95% confidence level.
+HMM Effects of Time and Background Characteristics
+Examining the impact of generic email prompts on participant
+engagement over time revealed the estimated transition matrices
+and posterior probability means provided in section 4 in
+Multimedia Appendix 1. During the first half year, 72%
+(16,413/22,797) of the participants were estimated to be in the
+inactivity state, which decreased to 65% (14,818/22,797) during
+the second half year. For the last half year observed, 69%
+(15,730/22,797) of the participants were estimated to be in the
+inactivity state. The impact of receiving and opening a generic
+email on the transition probabilities did not change much over
+time, being associated with a decreased likelihood of remaining
+in the inactivity state by 2 percentage points in the first and third
+half years and 3 percentage points in the second half year.
+The background characteristics of the participants were also
+linked to differences in activity levels. On the basis of the
+JMIR Mhealth Uhealth 2023 | vol. 11 | e43033 | p. 7
+https://mhealth.jmir.org/2023/1/e43033
+(page number not for citation purposes)
+Agachi et al
+JMIR MHEALTH AND UHEALTH
+XSL•FO
+RenderX
+
+estimated HMM model (transition matrices and posterior
+probability means shown in section 5 in Multimedia Appendix
+1), female participants were more likely to be in the inactivity
+state and less likely to be in the high activity state compared
+with male participants (with a difference of 6 percentage points).
+The lowest socioeconomic group and the youngest age group
+were associated with a higher likelihood of inactivity, whereas
+the age group from 47 to 56 years was the most active. Finally,
+being an early mHealth app adopter was associated with a 5
+percentage point decrease in the likelihood of being in the
+inactivity state (with the same level of increase in the likelihood
+of being in the high activity state).
+The impact of the generic email prompts on participant
+engagement did not vary substantially between participants
+depending on their age, gender, or NSES quintile, with the only
+difference being that the participants in the oldest age group
+(67 to 80 years) had a higher likelihood of transitioning toward
+one of the activity states after opening a generic email than the
+other age groups (an effect of 4 percentage points).
+To examine the robustness of the above-discussed results,
+several additional models were estimated, with the results
+confirming those presented in this study. Section 6 in
+Multimedia 
+Appendix 
+1
+contains 
+several 
+alternative
+specifications of the HMM model and their estimation results,
+namely using an indicator for any email received (independent
+of the email type or targeting nature) and incorporating the email
+prompts as covariates in the response probabilities model. In
+addition, following the Strengthening the Reporting of
+Observational 
+Studies 
+in 
+Epidemiology 
+(STROBE)
+recommendations, the checklist presented in Multimedia
+Appendix 2 was completed.
+Discussion
+Principal Findings
+Digital behavior change programs are widely implemented as
+a means of improving lifestyle behaviors and population health.
+However, such programs often exhibit low participant
+engagement rates, with additional effort needed from the
+program providers to stimulate and maintain engagement. This
+study analyzed the ability of email prompts to increase
+participant engagement with an mHealth app aimed at
+supporting behavior change. Although email prompts showed
+some positive results in stimulating engagement, their effect in
+a large-scale, nonexperimental setting with a longer time span
+is still unclear.
+The analysis in this study used an HMM to disentangle the
+dynamics around email prompts and participant engagement.
+The estimated HMM with 3 latent states revealed that, on
+average, 70% (15,958/22,797) of the participants were in the
+inactivity state, gaining 0 points weekly; 18% (4103/22,797)
+of the participants were in the average activity state—gaining
+27 points weekly; and 12% (2736/22,797) of the participants
+were in the high activity state—gaining 182 points weekly.
+Focusing on the effect of generic emails, the estimation results
+indicated that when allowing for time dependency, receiving
+and opening a generic email was associated with a 3 percentage
+point lower likelihood of remaining inactive than when no email
+was received (equivalent to a 3 percentage point increase in the
+likelihood of transitioning from inactivity to one of the activity
+states). By contrast, receiving but not opening a generic email
+was associated with a higher likelihood of inactivity. This
+observed negative impact that receiving but not opening an
+email had on participant engagement can be explained by the
+higher proportion of inactive participants in the group that did
+not open the email than in the group that did not receive an
+email. Given that the average opening rate of the emails sent
+within the analyzed mHealth app was above 60%, it can be
+argued that some increase in participant engagement is possible
+with the use of generic emails; however, additional effort should
+be directed at ensuring high opening rates for the emails sent.
+Allowing the effect of generic emails to vary over time revealed
+a relatively stable pattern: in all 3 half-year periods analyzed,
+the likelihood of moving out of inactivity after opening a generic
+email was between 2 and 3 percentage points, with the strongest
+effect corresponding to the second half year of the observation
+period. Estimating the association of the effects observed with
+participant background characteristics showed that being a male,
+being older, having a higher socioeconomic status, and being
+an early adopter of the mHealth app were all factors associated
+with higher participant engagement. The impact of the generic
+emails did not significantly depend on the participants’ age,
+gender, or NSES quintile, with the only difference being that
+the participants in the age group of 67 to 80 years were more
+likely to move out of inactivity after receiving and opening a
+generic email than those in the other age groups.
+This study further analyzed the impact of detailed email
+categories on participant engagement, revealing both negative
+and positive effects. On one hand, it was estimated that emails
+welcoming participants to the program and emails containing
+health-related information were associated with an increase in
+activity levels (12 and 3 percentage points, respectively). On
+the other hand, emails that contained generic program
+information, promoted special offers on products in the web
+shop, or were aimed at reactivating inactive users were linked
+to a decrease in activity levels (2, 2, and 5 percentage points,
+respectively). These findings imply that participants were more
+reactive to health-related information, which was in line with
+the program’s goals and potentially with the participants’
+motivation for using the mHealth app, while being resistant to
+emails that deviated from the program’s goal of improving
+health behaviors. Moreover, the negative effect of the
+reactivation email implies that it is difficult to stimulate activity
+in participants who have been inactive for long periods,
+highlighting the importance of focusing on preventing
+participants from becoming inactive.
+Comparison With Previous Work
+Digital behavior change programs often exhibit low participant
+engagement [11-13]. On the basis of a systematic review,
+Kelders et al [11] estimated that the average adherence to
+web-based lifestyle interventions is 23%, which is similar to
+the 30% of active participants identified in the mHealth app in
+this study. The slightly higher proportion of active participants
+estimated here can be because of the mobile app format of the
+JMIR Mhealth Uhealth 2023 | vol. 11 | e43033 | p. 8
+https://mhealth.jmir.org/2023/1/e43033
+(page number not for citation purposes)
+Agachi et al
+JMIR MHEALTH AND UHEALTH
+XSL•FO
+RenderX
+
+behavior change intervention, which is associated with higher
+flexibility of use and more personalized content [51].
+In an attempt to identify means of improving participant
+engagement, email prompts have been examined in the context
+of behavior change programs, with studies reporting small to
+moderate effects [23]. However, the effects of email prompts
+on participant engagement are often analyzed over a short period
+[25,27], subsequently diminishing [12,52] or even disappearing
+[25]. This study estimated that participant engagement increased
+by approximately 3 percentage points when an email was
+received and opened. A similar impact was seen in the study of
+Ryan et al [52], who based on average activity levels, observed
+an increase of approximately 3% in the steps taken on the days
+on which an email was sent. A possible reason for the limited
+effect of email prompts on engagement is that participants can
+find such reminders annoying [53]. Alternatively, in the case
+of targeted emails, inadequate personalization is another factor
+linked to low participant engagement [54]. Finally, inducing
+higher participant engagement over time is a challenging task
+[12,19], partially because of the passive nature of behavior
+change programs, where participants need to act by themselves
+to benefit [14].
+Participant background characteristics are linked to their
+engagement with the mHealth app [55]. Similar to the findings
+in this study, previous work has also shown that males [52,56],
+older age groups [10,56,57], higher socioeconomic status
+participants [10,52], and early adopters [38] have higher
+engagement with mHealth apps. The observation that older age
+groups are more responsive to emails than other age groups can
+be explained by their appreciation of reminders within mHealth
+apps [58], indicating that such tools are especially efficient in
+increasing activity levels among the older population group.
+The results of this study show that although email prompts can
+achieve a small to moderate increase in participant engagement,
+this tool alone is likely insufficient for increasing activity levels
+in an mHealth behavior change app. However, given that the
+costs associated with email prompts are relatively low, they
+may be a cost-effective means to improve participant
+engagement with an mHealth app when the program achieves
+a high population reach [7,59]. In addition, alternative program
+efforts, such as expert consultation or real-time feedback [7]
+could be used next to email prompts to further reduce participant
+dropout and improve the program effectiveness.
+Limitations and Future Research
+There are several limitations around this study.
+First, as a measure of participant engagement, this study solely
+used the activities recorded within the mHealth app. However,
+it is likely that the participants performed additional activities
+that were not recorded in the app environment. To overcome
+this limitation, one approach could be to combine the currently
+used objective measure of participant engagement with an
+additional subjective measure through which participants
+themselves can report their perceived activity level.
+Alternatively, a more accurate measure of activity could be
+achieved by extending the mHealth app to also include a
+wearable device, which could measure physical activity in a
+more precise manner.
+Second, it is not a given that whenever a participant opens an
+email, they become aware of its content. It could be the case
+that some participants briefly open the email only to delete it,
+without reading any of its elements. In the setup of this study,
+we consider the action of opening the email to be a sufficient
+indication that the participant has been exposed to a reminder
+about the mHealth program analyzed. As a future extension to
+the current analysis, it could be of interest to examine whether
+reading the emails can lead to a higher impact on participant
+engagement. One possible way to measure whether participants
+read through the emails could be through the use of a clickable
+follow-up link, which can help distinguish between participants
+who pay attention to the content of the email and those who do
+not.
+Third, the participants of the mHealth app analyzed in this study
+were older than 18 years. This excludes children and teenagers,
+with unclear insights into how the email prompts would work
+in increasing activity levels among these population groups.
+Given the importance of developing healthy lifestyle choices
+from a young age, a further extension to this study could be
+examining whether and how email prompts help increase activity
+among the younger population.
+Finally, it is highly likely that the specific wording and topics
+addressed in an email have an impact on its effectiveness in
+increasing participant engagement. Although data on the detailed
+elements of the emails were not available in this study, analyzing
+such information could be a valuable extension. Namely, it
+would be of interest to examine how varying phrasing of the
+same topic and different levels of email personalization affect
+subsequent participant engagement.
+Conclusions
+In this study, email prompts were examined as a tool for
+increasing participant engagement with a large-scale,
+open-access mHealth app with the goal of lifestyle behavior
+change. On the basis of an HMM allowing for weekly transitions
+between latent activity states, it was estimated that receiving
+and opening an email was associated with a small to moderate
+increase in participant engagement, which persisted over the 78
+weeks analyzed. This finding suggests that email prompts can
+be used for improving participant engagement, albeit to a limited
+extent. However, given the relatively low costs associated with
+emails and the high population reach that mHealth apps can
+achieve, such instruments can be a cost-effective means of
+improving participant engagement to reduce dropout and
+improve the effectiveness of behavior change programs.
+Acknowledgments
+The authors wish to thank Menzis and SamenGezond for providing the data necessary for this project.
+JMIR Mhealth Uhealth 2023 | vol. 11 | e43033 | p. 9
+https://mhealth.jmir.org/2023/1/e43033
+(page number not for citation purposes)
+Agachi et al
+JMIR MHEALTH AND UHEALTH
+XSL•FO
+RenderX
+
+Funding for this project was provided by Menzis (the health insurance company that introduced the mHealth app). The funder
+had no involvement in the study design, data analysis and interpretation, writing of the report, or decision to submit the report
+for publication.
+Authors' Contributions
+All authors contributed equally to the conception and design of the study, data acquisition, data analysis and interpretation, writing
+and revising the paper, and reading and approving the final version of the submitted manuscript.
+Conflicts of Interest
+EA was funded by Menzis (the health insurance company that introduced the mHealth app) in her position as a Doctor of Philosophy
+candidate.
+Multimedia Appendix 1
+Web-based appendix with additional analysis information.
+[DOCX File , 1474 KB-Multimedia Appendix 1]
+Multimedia Appendix 2
+Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) checklist.
+[DOCX File , 32 KB-Multimedia Appendix 2]
+References
+1.
+Noncommunicable diseases: mortality. World Health Organization. URL: https://www.who.int/gho/ncd/mortality_morbidity/
+en/ [accessed 2022-07-10]
+2.
+Bertram MY, Sweeny K, Lauer JA, Chisholm D, Sheehan P, Rasmussen B, et al. Investing in non-communicable diseases:
+an estimation of the return on investment for prevention and treatment services. Lancet 2018 May 19;391(10134):2071-2078.
+[doi: 10.1016/S0140-6736(18)30665-2] [Medline: 29627159]
+3.
+Murray E, Hekler EB, Andersson G, Collins LM, Doherty A, Hollis C, et al. Evaluating digital health interventions: key
+questions and approaches. Am J Prev Med 2016 Nov;51(5):843-851 [FREE Full text] [doi: 10.1016/j.amepre.2016.06.008]
+[Medline: 27745684]
+4.
+Blandford A. HCI for health and wellbeing: challenges and opportunities. Int J Human Comput Stud 2019 Nov;131:41-51.
+[doi: 10.1016/j.ijhcs.2019.06.007]
+5.
+Lehto T, Oinas-Kukkonen H. Examining the persuasive potential of web-based health behavior change support systems.
+AIS Transact Human Comput Interact 2015 Sep 30;7(3):126-140. [doi: 10.17705/1thci.00069]
+6.
+Chen X, Zhu Z, Chen M, Li Y. Large-scale mobile fitness app usage analysis for smart health. IEEE Commun Mag 2018
+Apr;56(4):46-52. [doi: 10.1109/mcom.2018.1700807]
+7.
+Yardley L, Spring BJ, Riper H, Morrison LG, Crane DH, Curtis K, et al. Understanding and promoting effective engagement
+with digital behavior change interventions. Am J Prev Med 2016 Nov;51(5):833-842. [doi: 10.1016/j.amepre.2016.06.015]
+[Medline: 27745683]
+8.
+Miller DP, Weaver KE, Case LD, Babcock D, Lawler D, Denizard-Thompson N, et al. Usability of a novel mobile health
+iPad app by vulnerable populations. JMIR Mhealth Uhealth 2017 Apr 11;5(4):e43 [FREE Full text] [doi:
+10.2196/mhealth.7268] [Medline: 28400354]
+9.
+Agachi E, Bijmolt TH, Mierau JO, van Ittersum K. Adoption of the website and mobile app of a preventive health program
+across neighborhoods with different socioeconomic conditions in the netherlands: longitudinal study. JMIR Hum Factors
+2022 Feb 02;9(1):e32112 [FREE Full text] [doi: 10.2196/32112] [Medline: 35107433]
+10.
+Perski O, Blandford A, West R, Michie S. Conceptualising engagement with digital behaviour change interventions: a
+systematic review using principles from critical interpretive synthesis. Transl Behav Med 2017 Jun;7(2):254-267 [FREE
+Full text] [doi: 10.1007/s13142-016-0453-1] [Medline: 27966189]
+11.
+Kelders SM, Kok RN, Ossebaard HC, Van Gemert-Pijnen JE. Persuasive system design does matter: a systematic review
+of adherence to web-based interventions. J Med Internet Res 2012 Nov 14;14(6):e152 [FREE Full text] [doi:
+10.2196/jmir.2104] [Medline: 23151820]
+12.
+Compernolle S, Vandelanotte C, Cardon G, De Bourdeaudhuij I, De Cocker K. Effectiveness of a web-based,
+computer-tailored, pedometer-based physical activity intervention for adults: a cluster randomized controlled trial. J Med
+Internet Res 2015 Feb 09;17(2):e38 [FREE Full text] [doi: 10.2196/jmir.3402] [Medline: 25665498]
+13.
+Amagai S, Pila S, Kaat AJ, Nowinski CJ, Gershon RC. Challenges in participant engagement and retention using mobile
+health apps: literature review. J Med Internet Res 2022 Apr 26;24(4):e35120 [FREE Full text] [doi: 10.2196/35120]
+[Medline: 35471414]
+JMIR Mhealth Uhealth 2023 | vol. 11 | e43033 | p. 10
+https://mhealth.jmir.org/2023/1/e43033
+(page number not for citation purposes)
+Agachi et al
+JMIR MHEALTH AND UHEALTH
+XSL•FO
+RenderX
+
+14.
+Prochaska JO, Velicer WF, Fava JL, Rossi JS, Tsoh JY. Evaluating a population-based recruitment approach and a stage-based
+expert system intervention for smoking cessation. Addict Behav 2001;26(4):583-602. [doi: 10.1016/s0306-4603(00)00151-9]
+[Medline: 11456079]
+15.
+Lentferink AJ, Oldenhuis HK, de Groot M, Polstra L, Velthuijsen H, van Gemert-Pijnen JE. Key components in eHealth
+interventions combining self-tracking and persuasive eCoaching to promote a healthier lifestyle: a scoping review. J Med
+Internet Res 2017 Aug 01;19(8):e277 [FREE Full text] [doi: 10.2196/jmir.7288] [Medline: 28765103]
+16.
+Stawarz K, Preist C, Tallon D, Wiles N, Coyle D. User experience of cognitive behavioral therapy apps for depression: an
+analysis of app functionality and user reviews. J Med Internet Res 2018 Jun 06;20(6):e10120 [FREE Full text] [doi:
+10.2196/10120] [Medline: 29875087]
+17.
+Kim M, Yang J, Ahn W, Choi HJ. Machine learning analysis to identify digital behavioral phenotypes for engagement and
+health outcome efficacy of an mHealth intervention for obesity: randomized controlled trial. J Med Internet Res 2021 Jun
+24;23(6):e27218 [FREE Full text] [doi: 10.2196/27218] [Medline: 34184991]
+18.
+Li Y, Guo Y, Hong YA, Zeng Y, Monroe-Wise A, Zeng C, et al. Dose-response effects of patient engagement on health
+outcomes in an mHealth intervention: secondary analysis of a randomized controlled trial. JMIR Mhealth Uhealth 2022
+Jan 04;10(1):e25586 [FREE Full text] [doi: 10.2196/25586] [Medline: 34982724]
+19.
+Kaptein M, Markopoulos P, de Ruyter B, Aarts E. Personalizing persuasive technologies: explicit and implicit personalization
+using persuasion profiles. Int J Human Comput Stud 2015 May;77:38-51. [doi: 10.1016/j.ijhcs.2015.01.004]
+20.
+Taki S, Lymer S, Russell CG, Campbell K, Laws R, Ong K, et al. Assessing user engagement of an mHealth intervention:
+development and implementation of the growing healthy app engagement index. JMIR Mhealth Uhealth 2017 Jun 29;5(6):e89
+[FREE Full text] [doi: 10.2196/mhealth.7236] [Medline: 28663164]
+21.
+Atorkey P, Paul C, Bonevski B, Wiggers J, Mitchell A, Byrnes E, et al. Uptake of proactively offered online and telephone
+support services targeting multiple health risk behaviors among vocational education students: process evaluation of a
+cluster randomized controlled trial. J Med Internet Res 2021 Jan 06;23(1):e19737 [FREE Full text] [doi: 10.2196/19737]
+[Medline: 33404504]
+22.
+Fry JP, Neff RA. Periodic prompts and reminders in health promotion and health behavior interventions: systematic review.
+J Med Internet Res 2009 May 14;11(2):e16 [FREE Full text] [doi: 10.2196/jmir.1138] [Medline: 19632970]
+23.
+Alkhaldi G, Hamilton FL, Lau R, Webster R, Michie S, Murray E. The effectiveness of prompts to promote engagement
+with digital interventions: a systematic review. J Med Internet Res 2016 Jan 08;18(1):e6 [FREE Full text] [doi:
+10.2196/jmir.4790] [Medline: 26747176]
+24.
+Buchholz SW, Wilbur J, Ingram D, Fogg L. Physical activity text messaging interventions in adults: a systematic review.
+Worldviews Evid Based Nurs 2013 Aug;10(3):163-173. [doi: 10.1111/wvn.12002] [Medline: 23746267]
+25.
+MacPherson MM, Merry KJ, Locke SR, Jung ME. Effects of mobile health prompts on self-monitoring and exercise
+behaviors following a diabetes prevention program: secondary analysis from a randomized controlled trial. JMIR Mhealth
+Uhealth 2019 Sep 05;7(9):e12956 [FREE Full text] [doi: 10.2196/12956] [Medline: 31489842]
+26.
+Domin A, Spruijt-Metz D, Theisen D, Ouzzahra Y, Vögele C. Smartphone-based interventions for physical activity
+promotion: scoping review of the evidence over the last 10 years. JMIR Mhealth Uhealth 2021 Jul 21;9(7):e24308 [FREE
+Full text] [doi: 10.2196/24308] [Medline: 34287209]
+27.
+Pham Q, Wiljer D, Cafazzo JA. Beyond the randomized controlled trial: a review of alternatives in mHealth clinical trial
+methods. JMIR Mhealth Uhealth 2016 Sep 09;4(3):e107 [FREE Full text] [doi: 10.2196/mhealth.5720] [Medline: 27613084]
+28.
+McClure JB, Shortreed SM, Bogart A, Derry H, Riggs K, St John J, et al. The effect of program design on engagement
+with an internet-based smoking intervention: randomized factorial trial. J Med Internet Res 2013 Mar 25;15(3):e69 [FREE
+Full text] [doi: 10.2196/jmir.2508] [Medline: 23529377]
+29.
+Zhao J, Freeman B, Li M. Can mobile phone apps influence people's health behavior change? An evidence review. J Med
+Internet Res 2016 Oct 31;18(11):e287 [FREE Full text] [doi: 10.2196/jmir.5692] [Medline: 27806926]
+30.
+Danaher BG, Boles SM, Akers L, Gordon JS, Severson HH. Defining participant exposure measures in Web-based health
+behavior change programs. J Med Internet Res 2006 Aug 30;8(3):e15 [FREE Full text] [doi: 10.2196/jmir.8.3.e15] [Medline:
+16954125]
+31.
+Couper MP, Alexander GL, Zhang N, Little RJ, Maddy N, Nowak MA, et al. Engagement and retention: measuring breadth
+and depth of participant use of an online intervention. J Med Internet Res 2010 Nov 18;12(4):e52 [FREE Full text] [doi:
+10.2196/jmir.1430] [Medline: 21087922]
+32.
+Silfee VJ, Haughton CF, Jake-Schoffman DE, Lopez-Cepero A, May CN, Sreedhara M, et al. Objective measurement of
+physical activity outcomes in lifestyle interventions among adults: a systematic review. Prev Med Rep 2018 Sep;11:74-80
+[FREE Full text] [doi: 10.1016/j.pmedr.2018.05.003] [Medline: 29984142]
+33.
+Kohl LF, Crutzen R, de Vries NK. Online prevention aimed at lifestyle behaviors: a systematic review of reviews. J Med
+Internet Res 2013 Jul 16;15(7):e146 [FREE Full text] [doi: 10.2196/jmir.2665] [Medline: 23859884]
+34.
+Michie S, Yardley L, West R, Patrick K, Greaves F. Developing and evaluating digital interventions to promote behavior
+change in health and health care: recommendations resulting from an international workshop. J Med Internet Res 2017 Jun
+29;19(6):e232 [FREE Full text] [doi: 10.2196/jmir.7126] [Medline: 28663162]
+JMIR Mhealth Uhealth 2023 | vol. 11 | e43033 | p. 11
+https://mhealth.jmir.org/2023/1/e43033
+(page number not for citation purposes)
+Agachi et al
+JMIR MHEALTH AND UHEALTH
+XSL•FO
+RenderX
+
+35.
+Greaney ML, Sprunck-Harrild K, Bennett GG, Puleo E, Haines J, Viswanath KV, et al. Use of email and telephone prompts
+to increase self-monitoring in a Web-based intervention: randomized controlled trial. J Med Internet Res 2012 Jul 27;14(4):e96
+[FREE Full text] [doi: 10.2196/jmir.1981] [Medline: 22842775]
+36.
+Schneider F, van Osch L, Schulz DN, Kremers SP, de Vries H. The influence of user characteristics and a periodic email
+prompt on exposure to an internet-delivered computer-tailored lifestyle program. J Med Internet Res 2012 Mar 01;14(2):e40
+[FREE Full text] [doi: 10.2196/jmir.1939] [Medline: 22382037]
+37.
+Zhu Y, Duan M, Riphagen I, Minovic I, Mierau JO, Carrero JJ, et al. Separate and combined effects of individual and
+neighbourhood socio-economic disadvantage on health-related lifestyle risk factors: a multilevel analysis. Int J Epidemiol
+2022 Jan 06;50(6):1959-1969 [FREE Full text] [doi: 10.1093/ije/dyab079] [Medline: 34999857]
+38.
+Dekker L, Rijnks R, Mierau J. The health potential of neighborhoods: a population-wide study in the Netherlands. SSM
+Popul Health 2021 Sep;15:100867 [FREE Full text] [doi: 10.1016/j.ssmph.2021.100867] [Medline: 34377761]
+39.
+Rogers E. Diffusion of Innovations, 4th Edition. Mumbai, India: Free Press; 2010.
+40.
+Rabiner L. A tutorial on hidden Markov models and selected applications in speech recognition. Proc IEEE 1989
+Feb;77(2):257-286.
+41.
+Zucchini W, MacDonald I. Hidden Markov Models for Time Series An Introduction Using R, Second Edition. London:
+Chapman & Hall; 2016.
+42.
+Netzer O, Ebbes P, Bijmolt T. Hidden Markov models in marketing. In: Advanced Methods for Modeling Markets. Cham:
+Springer; 2017.
+43.
+Eysenbach G. The law of attrition. J Med Internet Res 2005 Mar 31;7(1):e11 [FREE Full text] [doi: 10.2196/jmir.7.1.e11]
+[Medline: 15829473]
+44.
+Christensen H, Mackinnon A. The law of attrition revisited. J Med Internet Res 2006 Sep 29;8(3):e20; author reply e21
+[FREE Full text] [doi: 10.2196/jmir.8.3.e20] [Medline: 17032636]
+45.
+Hughes JP, Guttorp P, Charles SP. A non‐homogeneous hidden Markov model for precipitation occurrence. J Royal
+Statistical Soc Series C (Applied Statistics) 2002 Jan 06;48(1):15-30. [doi: 10.1111/1467-9876.00136]
+46.
+Langrock R, Kneib T, Sohn A, DeRuiter SL. Nonparametric inference in hidden Markov models using P-splines. Biometrics
+2015 Jun;71(2):520-528. [doi: 10.1111/biom.12282] [Medline: 25586063]
+47.
+DeRuiter SL, Langrock R, Skirbutas T, Goldbogen JA, Calambokidis J, Friedlaender AS, et al. A multivariate mixed hidden
+Markov model for blue whale behaviour and responses to sound exposure. Ann Appl Stat 2017 Mar 1;11(1):362-392. [doi:
+10.1214/16-aoas1008]
+48.
+Li M, Bolker BM. Incorporating periodic variability in hidden Markov models for animal movement. Mov Ecol 2017;5:1
+[FREE Full text] [doi: 10.1186/s40462-016-0093-6] [Medline: 28149522]
+49.
+Pohle J, Langrock R, van Beest FM, Schmidt NM. Selecting the number of states in hidden Markov models: pragmatic
+solutions illustrated using animal movement. J Agric Biol Environ Stat 2017 Jun 5;22(3):270-293. [doi:
+10.1007/s13253-017-0283-8]
+50.
+Vermunt J, Tran B, Magidson J. Latent class models in longitudinal research. In: Handbook of Longitudinal Research.
+Burlington: Elsevier; 2008.
+51.
+Dounavi K, Tsoumani O. Mobile health applications in weight management: a systematic literature review. Am J Prev Med
+2019 Jun;56(6):894-903 [FREE Full text] [doi: 10.1016/j.amepre.2018.12.005] [Medline: 31003801]
+52.
+Ryan J, Edney S, Maher C. Engagement, compliance and retention with a gamified online social networking physical
+activity intervention. Transl Behav Med 2017 Dec;7(4):702-708 [FREE Full text] [doi: 10.1007/s13142-017-0499-8]
+[Medline: 28523603]
+53.
+Szinay D, Jones A, Chadborn T, Brown J, Naughton F. Influences on the uptake of and engagement with health and
+well-being smartphone apps: systematic review. J Med Internet Res 2020 May 29;22(5):e17572 [FREE Full text] [doi:
+10.2196/17572] [Medline: 32348255]
+54.
+Vo V, Auroy L, Sarradon-Eck A. Patients' perceptions of mHealth apps: meta-ethnographic review of qualitative studies.
+JMIR Mhealth Uhealth 2019 Jul 10;7(7):e13817 [FREE Full text] [doi: 10.2196/13817] [Medline: 31293246]
+55.
+Yang Y, Boulton E, Todd C. Measurement of adherence to mHealth physical activity interventions and exploration of the
+factors that affect the adherence: scoping review and proposed framework. J Med Internet Res 2022 Jun 08;24(6):e30817
+[FREE Full text] [doi: 10.2196/30817] [Medline: 35675111]
+56.
+Guertler D, Vandelanotte C, Kirwan M, Duncan MJ. Engagement and nonusage attrition with a free physical activity
+promotion program: the case of 10,000 steps australia. J Med Internet Res 2015 Jul 15;17(7):e176 [FREE Full text] [doi:
+10.2196/jmir.4339] [Medline: 26180040]
+57.
+Edney S, Ryan JC, Olds T, Monroe C, Fraysse F, Vandelanotte C, et al. User engagement and attrition in an app-based
+physical activity intervention: secondary analysis of a randomized controlled trial. J Med Internet Res 2019 Nov
+27;21(11):e14645 [FREE Full text] [doi: 10.2196/14645] [Medline: 31774402]
+58.
+Lilje SC, Olander E, Berglund J, Skillgate E, Anderberg P. Experiences of older adults with mobile phone text messaging
+as reminders of home exercises after specialized manual therapy for recurrent low back pain: a qualitative study. JMIR
+Mhealth Uhealth 2017 Mar 30;5(3):e39 [FREE Full text] [doi: 10.2196/mhealth.7184] [Medline: 28360026]
+JMIR Mhealth Uhealth 2023 | vol. 11 | e43033 | p. 12
+https://mhealth.jmir.org/2023/1/e43033
+(page number not for citation purposes)
+Agachi et al
+JMIR MHEALTH AND UHEALTH
+XSL•FO
+RenderX
+
+59.
+Schubart JR, Stuckey HL, Ganeshamoorthy A, Sciamanna CN. Chronic health conditions and internet behavioral interventions:
+a review of factors to enhance user engagement. Comput Inform Nurs 2011 Feb;29(2):81-92 [FREE Full text] [doi:
+10.1097/NCN.0b013e3182065eed] [Medline: 21164337]
+Abbreviations
+HMM: hidden Markov model
+mHealth: mobile health
+NSES: neighborhood socioeconomic status
+STROBE: Strengthening the Reporting of Observational Studies in Epidemiology
+Edited by L Buis; submitted 28.09.22; peer-reviewed by P Atorkey, YA Hong; comments to author 20.12.22; revised version received
+21.01.23; accepted 08.02.23; published 11.05.23
+Please cite as:
+Agachi E, Bijmolt THA, van Ittersum K, Mierau JO
+The Effect of Periodic Email Prompts on Participant Engagement With a Behavior Change mHealth App: Longitudinal Study
+JMIR Mhealth Uhealth 2023;11:e43033
+URL: https://mhealth.jmir.org/2023/1/e43033
+doi: 10.2196/43033
+PMID:
+©Elena Agachi, Tammo H A Bijmolt, Koert van Ittersum, Jochen O Mierau. Originally published in JMIR mHealth and uHealth
+(https://mhealth.jmir.org), 11.05.2023. This is an open-access article distributed under the terms of the Creative Commons
+Attribution License (https://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and reproduction
+in any medium, provided the original work, first published in JMIR mHealth and uHealth, is properly cited. The complete
+bibliographic information, a link to the original publication on https://mhealth.jmir.org/, as well as this copyright and license
+information must be included.
+JMIR Mhealth Uhealth 2023 | vol. 11 | e43033 | p. 13
+https://mhealth.jmir.org/2023/1/e43033
+(page number not for citation purposes)
+Agachi et al
+JMIR MHEALTH AND UHEALTH
+XSL•FO
+RenderX

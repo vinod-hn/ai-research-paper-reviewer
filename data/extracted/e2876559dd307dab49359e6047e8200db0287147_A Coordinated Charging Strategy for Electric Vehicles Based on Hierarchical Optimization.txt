@@ -1,0 +1,801 @@
+A Coordinated Charging Strategy for Electric Vehicles Based on 
+Hierarchical Optimization  
+Jin-Yong SHI 1,a, Hui-Min KE 1,b , Chong LI1,c and Jun-Jun SHAO1,d,*  
+1 Nari Technology Co., Ltd., Nanjing 211100, Jiangsu, China 
+a shijinyong@sgepri.sgcc.com.cn, b kehuimin@sgepri.sgcc.com.cn, 
+ c lichong@sgepri.sgcc.com.cn, d18705158318@163.com 
+*Corresponding author 
+Keywords: Electric vehicles; hierarchical optimization; peak load shifting; load fluctuation 
+Abstract. There are many electric vehicles charging stations in distribution network. Uncoordinated 
+charging electric vehicles load is large and changes quickly; it brings risk to the operation of power 
+grid. If taking each station as an independent unit, which will reduce the practicability of the proposed 
+strategy because of the small consideration scope and incomplete information acquisition. Taking all 
+electric vehicles in the distribution network as an object to study will lack the consideration about the 
+differentiation of a single charging station. Also, controlling all electric vehicles directly through the 
+control center has high demand on reliability. And it is difficult to implement. Given this, the paper 
+used the hierarchical control method to control the electric vehicles in the charging stations and 
+studied charging strategy based on hierarchical optimization. The upper layer used the distribution 
+system load variance as an objective function to establish a model and peak load shifting. The lower 
+level model took the actual charging power deviation and load variance of the charging station into 
+account to reduce the load fluctuation of the charging station. The paper used function fmincon to 
+solve the upper level model and used CPLEX to solve the lower layer model. Finally, using a 
+modified IEEE 33-bus system with 3 EVAs to verify the feasibility of the model and method, which 
+reduced frequency between the control center and electric vehicles. Also, it cuts peak load and 
+reduces load fluctuations of charging stations. 
+Introduction  
+With the rapid development of the economy, the demand for energy in countries around the world is 
+increasing. The negative effects brought about by traditional fossil fuels have gradually emerged and 
+continuously restrict the sustainable development of the economy [1]. In order to solve the dilemma, 
+it is necessary to find energy sources with higher energy efficiency, better energy-saving and 
+emission-reducing effects to optimize the existing energy structure. Under this background, the 
+development of electric vehicles not only can revitalize the automobile industry, inject fresh vitality 
+into the automotive industry, but also greatly reduce energy consumption and promote energy 
+conservation and emission reduction. Therefore, electric vehicles have become a hot spot for 
+development in various countries in recent years [2]. However, uncoordinated charging of vehicles 
+influences the grid, so it is very important to study a suitable charging strategy for electric vehicles. 
+The electricity price guidance method means that the charging service provider formulates the 
+time-of-use price according to the specific situation and then guides the users so that the users can 
+respond autonomously to his own trip demand and electricity price, and ultimately achieve the 
+purpose of coordinated charging. Reference [3] formulated the optimal valley price time period to 
+guide the charging behavior of users, the difference between peak and valley load of the grid is 
+greatly reduced. Reference [4] aimed at the slow charging mode of electric private cars; the 
+corresponding model is established with the lowest charging cost of the user and the earliest start time 
+of the charging period. The optimal time-of-use price period with the smallest peak-valley difference 
+is obtained by solving the model. Reference [5] proposed strategy is mainly divided into two parts. 
+Firstly, the most appropriate charging load curve is obtained by taking the minimum cost of 
+electricity purchase at the charging station as the objective function, and then the objective function is 
+13
+Copyright © 2018, the Authors.  Published by Atlantis Press.
+This is an open access article under the CC BY-NC license (http://creativecommons.org/licenses/by-nc/4.0/).
+Advances in Engineering Research (AER), volume 174
+International Conference on Energy Development and Environmental Protection (EDEP 2018)
+
+modeled by minimizing the variance of the actual charging load curve and the tar-get load curve. 
+Using PSO algorithm to obtain the optimal peak-to-valley time and optimal time-of-use price. 
+Reference [6] based on the charging load of large-scale electric vehicles, they were modeled 
+separately without considering the V2G responsivity and considering the V2G responsivity. Both 
+introduced the valley price time period as a variable. The division of the peak-valley electricity price 
+period obtained by solving the model can effectively improve the operation safety of the distribution 
+network. Although the electricity price guidance method can shift the charging load of electric 
+vehicles from the peak price period to the valley price period, it is easy to form a new load peak 
+during the valley price period, which does not completely solve the problems caused by the 
+uncoordinated charging of electric vehicles. Centralized control mainly refers to the centralized 
+management of each electric vehicle through the controller [7]. Reference [8] combined the 
+forecasting load of unconnected electric car charging with the traditional real-time charging control 
+strategy to establish a new model, and used the rolling optimization algorithm to obtain the optimal 
+charging power of the electric vehicle. Reference [9] Based on the peak-to-peak electricity price, the 
+combination of on-line optimization and off-line optimization controls the charging power of the 
+electric vehicle via the controller, so that the total electricity load is lower than the cell power limit. So 
+the values are optimized at the end of each control period. Reference [10, 11] used centralized control 
+strategies to optimize various objectives, including reducing power loss, minimizing load variance, 
+and maximizing the load factor. This kind of control method requires an upper-level control 
+organization to collect information on electric vehicles, including the initial SOC (State of charge), 
+the SOC that the user needs when reaching the end of charging, and the time it takes to leave the 
+charging system. The difficulty of this centralized optimization method increases with the increasing 
+number of electric vehicles, coupled with the limitations of existing communication technologies. It 
+is unrealistic to control and charge each electric car through the upper control center. So it is 
+necessary to consider the hierarchical control mode and interact the charging station with the control 
+center. This kind of control mode for issuing electric vehicles through layers of instructions avoids 
+the heavy storage and computation burden of the control center, and at the same time greatly reduces 
+the requirements on the reliability and bandwidth of the communication network. Reference [12] 
+used hierarchical optimization model, but the impact of the load fluctuations of the charging station 
+itself on the tie line is not taken into account in the lower level model.  
+Based on the above reasons, the upper layer model considers peak load filling. In the lower layer 
+model, it is considered that the charging power should match the guidance power as much as possible. 
+On the other hand, the load fluctuation of the charging station itself should be minimized. The 
+fmincon function is used to solve the up-per model, CPLEX is used to solve the lower model, and the 
+IEEE 33-node test system with three charging stations is used as an example to verify the proposed 
+method.  
+Hierarchical Control Method for Electric Vehicles 
+For the hierarchical control proposed in this paper, the control model structure constructed as shown 
+in Figure 1, the entire hierarchical control system is divided into control center, electric vehicle 
+charging station, station charging equipment. The control center of the figure is connected with the 
+external network and is the highest control layer of the system. Its main task is to coordinate the 
+charging power of each electric vehicle charging station and reduce the impact of the charging load 
+on the power grid. 
+14
+Advances in Engineering Research (AER), volume 174
+
+Charging 
+station 1
+Charging 
+station 2
+Charging 
+station n
+...
+Control 
+center
+EV
+EV
+...
+EV
+EV
+EV
+...
+EV
+EV
+EV
+...
+EV
+...
+ 
+Fig. 1 Frame chart of electric vehicle stratified control 
+In order to facilitate the development of suitable strategies for upper-level control centers and 
+electric vehicle charging stations, this paper uses the method described in reference [13] to analyze 
+the results of the reference [14] and the Federal Highway Administration of the United States 
+Department of Transportation in 2009 for families across the United States [15], It can roughly get the 
+arrival time, the probability of leaving the station and the probability density function of the charging 
+interval mileage of the vehicles in the charging station in the commercial area during the working day, 
+as shown in formulas (1) to (3). 
+fl(x)=
+⎩⎪⎨
+⎪⎧
+1
+√2πσl exp ቆ-
+൫x-μl൯
+2
+2σl
+2 ቇ       0<x≤μl+12 
+1
+ඥ2πσl exp ቆ-
+൫x-24-μl൯
+2
+2σl
+2
+ቇ  μl+12≤24 .
+                                         (1) 
+Where, μl=8.7; σl=3.3. 
+fa(x)=
+⎩⎪⎨
+⎪⎧
+1
+√2πσa exp ቆ-
+൫x+24-μa൯
+2
+2σa2
+ቇ0<x≤μa+12 
+1
+ඥ2πσa exp ቆ-
+൫x-μa൯
+2
+2σa2 ቇ   μa+12≤24. 
+                                         (2) 
+Where, μa=17.5; σa=3.34. 
+ft(x)=
+1
+√2πσt𝑥exp ቆ-
+൫lnx-μt൯
+2
+2σt2
+ቇ.                                                  (3)  
+Where, μt=3.1; σt=1.1. 
+Hierarchical Optimization Model for Electric Vehicles  
+Upper Optimization Model  
+The electric vehicle control center considers peak load shifting, and uses the minimum load variance 
+of the distribution network system as an objective function to establish an optimization model to 
+optimize the power steering curve delivered to the charging station. The mathematical expression is 
+as follows: 
+𝐹1=
+1
+T ෎
+(Pb,t+ ෍
+Ps,n,t-Pത
+N0
+n=1
+)
+2
+T
+t=1
+.                                                 (4) 
+15
+Advances in Engineering Research (AER), volume 174
+
+Pത=
+1
+T ෍
+(Pb,t+ ෌
+Ps,n,t
+N0
+n=1
+)
+T
+t=1
+.                                                     (5) 
+Where, T is  control period; Pb,t is base load; Ps,n,t is load guidance curve followed by electric 
+vehicle charging stations,Ps,n,t≥0;N0 is thenumber of charging stations  
+The constraints are as follows: 
+∑PG,i,t=∑PD,i,t +∑Ps,n,t +∑Ploss.                                                   (6) 
+Where, PG,i,t  is generator output; PD,i,t  is  load demand; Ploss   is grid loss. 
+Vmin≤Vi,t≤Vmax.                                                                (7) 
+Where, Vi,t   is node voltage at time t; Vmax,Vmin   are upper and lower limitation of node voltage.  
+│Pl,t│≤Pl,max.                                                                (8) 
+Where, Pl,max   is line l transmission power cap; Pl,t  is  transmission power of line l at time t. 
+0≤Ps,n,t≤෌
+APn,i,t
+N1
+i=1
+.          
+                                               (9) 
+Where, Pn,i,t    is   the i-th electric car charging power in  electric vehicle charging station n at time 
+t;A   is   the i-th electric vehicle arrives at the charging station n;N1 is the number of electric vehicles. 
+Lower Optimization Model  
+In order to formulate a coordinated charging strategy for an electric vehicle within a charging station, 
+the total load peak-to-valley difference of the distribution system must be considered first. Moreover, 
+the peak-to-valley difference of the charging station load is too large; it will bring a great impact to 
+the connection line between the charging station and the power grid. Therefore, the peak-to-valley 
+difference of the charging load of the charging station must also be considered. The mathematical 
+expression is as follows: 
+F2=λ1 ෎
+(Psc,n,t-
+1
+T ෌
+Psc,n,t)
+T
+t=1
+2
+T
+t=1
++λ2 ෍
+(Ps,n,t-Psc,n,t)2
+T
+t=1
+.                          (10) 
+Psc,n,t≤෌
+APn,i,t
+m
+i=1
+ .                                                             (11) 
+𝑃𝑛,𝑖,𝑡= ቄ𝑃𝑛,𝑖,𝑐ℎ  𝛼= 1  
+0       𝛼= 0 .                              (12) 
+Where,α=0 means electric vehicle does not charge;α=1 means  electric vehicle is charging. 
+The constraints are as follows: 
+Si,t+1= ൝Si,t+
+Pn,i,chη△t 
+Qi
+ α=1  
+Si,t                 α=0 . 
+                                                    (13) 
+Smin≤Si,t≤Smax..                                                             (14) 
+Where,Si,t    is   the SOC of the i-th electric vehicle in the charging station at the end of time period t; 
+η is Charging efficiency of electric vehicle; Qi   is the battery capacity of the i-th electric car in the 
+charging station;△t  is  the length of a control period; Smax , Smin   are    upper and lower limitation of 
+Power battery SOC; Pn,i,ch      is the i-th electric car charging power in  electric vehicle charging station 
+n. 
+α=0  t<ta or t>tl.                                                             (15) 
+Where,ta  is the moment of Electric car access charging system; tl  is the oment of Electric car 
+leaves charging system. 
+Si,tl ≥ Si .                                (16) 
+16
+Advances in Engineering Research (AER), volume 174
+
+Where, Si,tl   is the  SOC of electric vehicles when leaving the charging system; Si   is the SOC that 
+the user needs to reach. 
+Solution  
+The upper model is a multivariable constrained quadratic programming problem. This paper can be 
+solved by function fmincon. The lower model belongs to 0-1 planning and is a special kind of integer 
+programming problem. The traditional intelligent algorithm solves the problem slowly. In this paper, 
+the CPLEX solver is used to solve the problem quickly and the solution result is accurate. The 
+specific solution flow is shown in Fig.2. 
+Initial data
+The upper model: formulate charging station charging plan 
+to minimize system load variance
+Use function fmincon  to determine charging 
+charge plan
+The lower model: formulate the electric vehicle charging strategy to 
+minimize the sum of the charging station tracking deviation and the 
+charging station load variance
+Use cplex solver to determine the electric vehicle charging 
+scheme
+Output the result of the solution
+ 
+Fig. 2 Flow chart for solving hierarchical optimal model for electric vehicles charging  
+Case Studies  
+The modified IEEE33 node system is used as the test system, shown in Figure 3. The IEEE33 node 
+distribution network contains 33 nodes, 32 branches, and 5 contact switch branches. The detailed data 
+of the branch is shown in Table A1. Distribution system load data and changes are shown in Table A2 
+and Figure A1. Node 0 is set as a balanced node. The generator is accessed at node 15 and node 19. 
+Data is shown in Table 1. The three electric vehicle charging stations are connected to node 11, node 
+20 and node 28. The total number of electric vehicles accepted every day is shown in Table 2, and the 
+charging power of each electric vehicle is 3 kW. 
+9
+1
+2
+3
+4
+5
+6
+7
+8
+10
+11
+12
+13
+14
+15
+16
+19
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+G1
+EVA1
+G2
+EVA3
+17
+EVA2
+ 
+Fig. 3 Topology structure of the IEEE33 node distribution network 
+17
+Advances in Engineering Research (AER), volume 174
+
+  Table 1 Data of generators  
+generator 
+Active power upper limit [MW] 
+Active power lower limit [MW] 
+G1 
+46 
+13 
+G2 
+40 
+10 
+  Table 2  Numbers of electric vehicles in charging stations in business area 
+Charging station 
+Number 
+EVA1 
+800 
+EVA2 
+760 
+EVA3 
+840 
+Using the charging strategy proposed in this article to charge electric vehicles,distribution system 
+load increases on the original basis.Comparing it with the uncoordinated load curve of the distribution 
+network system, as shown in Figure 4. More detailed data  of distribution system load peaks and 
+valleys is shown in Table 3.The charging curve of charging station 1 of coordinated and 
+uncoordinated charging comparison is shown in  Fig. 4. 
+ 
+Fig. 4 Comparison of free charging mode and optimal charging mode 
+Table 3 Comparison of distribution network system load  
+Mode 
+Peak[MW] 
+Valley[MW] 
+Base load 
+13.50 
+9.22 
+Uncoordinated 
+charging 
+15.20 
+9.38 
+Coordinated charging 
+14.21 
+9.36 
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+9
+10
+11
+12
+13
+14
+15
+16
+Time(h)
+Load(MW)
+ 
+ 
+base load
+uncoordinated charging load
+coordinated charging load
+18
+Advances in Engineering Research (AER), volume 174
+
+ 
+Fig. 5 Comparison of Charging station 1 load 
+The data in the figure and table can be clearly seen that the coordinated charging strategy studied in 
+this paper can greatly reduce the peak load under the premise of guaranteeing the user's charging 
+demand. Although the valley of the load has not changed much, the load curve of the entire 
+distribution network system tends to slow down, reducing the impact on the grid. At the same time, 
+the load peak load of the charging station is also reduced and becomes more stable. 
+Conclusions  
+In this paper, the electric vehicle charging strategy based on hierarchical optimization is established. 
+The upper model uses the load variance of the distribution system as the objective function, while the 
+lower model focuses on the actual charging power deviation of the charging station and the charging 
+station load variance. For the two models, fmincon and CPLEX were used to solve the problem. 
+Finally, an IEEE33 node test system including three charging stations was used as an example to 
+verify the proposed method, which greatly reduced the number of communication between the 
+system control center and electric vehicles. At the same time, it has played a good role in cutting 
+peaks and reducing load fluctuations of charging stations. 
+Acknowledgement 
+This Project was financially supported by the National Key Technologies R&D Program of MOST 
+(2016YFB0101800), Science and Technology Program of SGCC (Operation Safety and 
+Interconnection Technology for Electric Infrastructure). 
+References 
+[1] LUO Zhuowei, HU Zechun, SONG Yonghua, et al. Study on plug-in electric vehicles charging 
+load calculating[J].Automation of Electric Power Systems, 2011,35 (14): 36-42. 
+[2] Ferdowsi M.Vehicle fleet as a distributed energy storage system for the power grid[C]// 
+Proceedings of IEEE Power & Engineering Society General Meeting, July 26-30, 2009, Calgary, 
+Canada: 1-2. 
+[3] GE Shaoyun, HUANG Liu, LIU Hong. Optimization of peak-valley TOU power price 
+time-period in ordered charging mode of electric vehicle [J]. Power System Protection and Control, 
+2012, 40 (10):1-5.   
+0 1
+2
+3 4
+5
+6 7
+8
+9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+Time(h)
+Load(MW)
+ 
+ 
+uncoordinated charging load
+coordinated charging load
+19
+Advances in Engineering Research (AER), volume 174
+
+[4] SUN Xiaoming, WANG Wei, SU Su, et al. Coordinated charging strategy for electric vehicles 
+based on time-of-use price[J].Automation of Electric Power System,2013,37 (1) :191-195. 
+[5] CHANG Fangyu, HUANG Mei, ZHANG Weige. Research on coordinated charging of electric 
+vehicles based on TOU charging price [J]. Power System Technology, 2016, 40(09):2609-2615. 
+[6]WANG Bo, AI Xin. Coordinated charging of peak-valley time-period optimization by considering 
+V2G user reactivity [J]. Modern Electric Power, 2016, 33(02):39-44. 
+[7]P Richardson Flynn, A Keane. Local Versus centralized charging strategies for electric vehicles in 
+low voltage distribution systems[J].IEEE Transactions on Smart Grid,2012,3 (2):1020-1028. 
+[8]LI Zhengshuo, GUO Qinglai, SUN Hongbin, et al.Real-time charging optimization method 
+considering vehicle charging prediction [J]. Automation of Electric Power Systems, 2014, 
+38(09):61-68. 
+[9]QI Xianjun, LI Dongwei,JI Shuyan. A coordinated charging control strategy for electric vehicles 
+in residential area with power limitation [J]. Power System Technology,     2016, 40(12):3715-3721. 
+[10]K Clement, E Haesen, J Driesen. Coordinated charging of multiple plug-in hybrid electric 
+vehicles in residential distribution grids[C]. Power Systems Conference & Exposition, 2009,107 
+(1):1-7. 
+[11]AF Ali, M Abdel-Akher, Z Ziadi,et al.Coordinated charging of plug-in hybrid electric vehicle for 
+voltage profile enhancement of distribution systems[C].IEEE International Conference on Power 
+Electronics & Drive Systems, 2013 :399-404. 
+[12]YAO Weifeng, ZHAO Junhua, WEN Fushuan,et al. A charging and discharging dispatching 
+strategy for elec-tric vehicles based on bi-level optimization. [J]. Auto-mation of Electric Power 
+Systems, 2012, 36(11):30-37. 
+[13]TIAN Liting1, SHI Shuanglong1, JIA Zhuo .A Statistical Model for Charging Power Demand of 
+Electric Vehicles [J]. Power System Technology, 2010, 34（11）:126-130. 
+[14]Wang Rui. Research on Parking Demand Forecasting Based on Regional Location Analysis [D]. 
+Kunming University of Science and Technology,2010. 
+[15]Federal Highway Administration, U.S. Department of Transporation.2009 national household 
+travel survey [EB/OL]. [2011-09-15]. http://nhts.ornl.gov. 
+ 
+Appendix A 
+Table A1   Branch data 
+Line 
+number 
+Starting 
+node 
+End 
+node 
+Resistance 
+[Ω] 
+Reactance 
+[Ω] 
+Line 
+number 
+Starting 
+node 
+End 
+node 
+Resistance 
+[Ω] 
+Reactance 
+[Ω] 
+1 
+0 
+1 
+0.182 
+0.147 
+17 
+16 
+17 
+0.824 
+0.674 
+2 
+1 
+2 
+0.591 
+0.352 
+18 
+1 
+18 
+0.236 
+0.265 
+3 
+2 
+3 
+0.457 
+0.286 
+19 
+18 
+19 
+1.602 
+1.454 
+4 
+3 
+4 
+0.472 
+0.214 
+20 
+19 
+20 
+0.515 
+0.575 
+5 
+4 
+5 
+0.92 
+0.813 
+21 
+20 
+21 
+0.819 
+1.373 
+6 
+5 
+6 
+0.283 
+0.729 
+22 
+2 
+22 
+0.512 
+0.483 
+7 
+6 
+7 
+0.824 
+0.728 
+23 
+22 
+23 
+0.913 
+0.812 
+8 
+7 
+8 
+1.120 
+0.245 
+24 
+23 
+24 
+0.996 
+0.801 
+9 
+8 
+9 
+1.144 
+0.831 
+25 
+5 
+25 
+0.312 
+0.204 
+10 
+9 
+10 
+0.265 
+0.165 
+26 
+25 
+26 
+0.384 
+0.247 
+20
+Advances in Engineering Research (AER), volume 174
+
+Line 
+number 
+Starting 
+node 
+End 
+node 
+Resistance 
+[Ω] 
+Reactance 
+[Ω] 
+Line 
+number 
+Starting 
+node 
+End 
+node 
+Resistance 
+[Ω] 
+Reactance 
+[Ω] 
+11 
+10 
+11 
+0..474 
+0.238 
+27 
+26 
+27 
+1.159 
+1.037 
+12 
+11 
+12 
+1.568 
+1.255 
+28 
+27 
+28 
+0.904 
+0.806 
+13 
+12 
+13 
+0.843 
+0.645 
+29 
+28 
+29 
+1.074 
+1.063 
+14 
+13 
+14 
+0.691 
+0.626 
+30 
+29 
+30 
+1.074 
+1.036 
+15 
+14 
+15 
+0.843 
+0.645 
+31 
+30 
+31 
+0.415 
+0.462 
+16 
+15 
+16 
+1.389 
+1.821 
+32 
+31 
+32 
+0.441 
+0.632 
+Table A2   Load data 
+Node 
+Load[MW] 
+Node 
+Load[MW] 
+Node 
+Load[MW] 
+Node 
+Load[MW] 
+Node 
+Load[MW] 
+0 
+0 
+7 
+0.745 
+14 
+0.155 
+21 
+0.24 
+28 
+0.510 
+1 
+0.355 
+8 
+0.155 
+15 
+0.13 
+22 
+0.245 
+29 
+0.705 
+2 
+0.315 
+9 
+0.155 
+16 
+0.195 
+23 
+1.775 
+30 
+0.560 
+3 
+0.51 
+10 
+0.125 
+17 
+0.210 
+24 
+1.790 
+31 
+0.785 
+4 
+0.185 
+11 
+0.155 
+18 
+0.280 
+25 
+0.155 
+32 
+0.580 
+5 
+0.155 
+12 
+0.155 
+19 
+0.280 
+26 
+0.165 
+ 
+ 
+6 
+0.745 
+13 
+0.510 
+20 
+0.250 
+27 
+0.155 
+ 
+ 
+Note: The data in the table is 9:00 load and the total node load is 13.5 MW. 
+ 
+Fig. A1 Variation curve of daily load ratio 
+ 
+0 1 2
+3 4
+5 6 7
+8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+0.64
+0.68
+0.72
+0.76
+0.80
+0.84
+0.88
+0,.92
+0.96
+1.00
+1.04
+Time(h)
+Daily load change coefficient
+ 
+21
+Advances in Engineering Research (AER), volume 174

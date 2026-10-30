@@ -1,0 +1,501 @@
+{
+    "topic": "deep learning",
+    "timestamp": "2026-10-30T11:17:06.632563",
+    "papers_found": 13,
+    "papers_with_pdf": 13,
+    "papers": [
+        {
+            "title": "Deep-learning models in medical image analysis: Detection of esophagitis from the Kvasir Dataset",
+            "abstract": "Early detection of esophagitis is important because this condition can progress to cancer if left untreated. However, the accuracies of different deep learning models in detecting esophagitis have yet to be compared. Thus, this study aimed to compare the accuracies of convolutional neural network models (GoogLeNet, ResNet-50, MobileNet V2, and MobileNet V3) in detecting esophagitis from the open Kvasir dataset of endoscopic images. Results showed that among the models, GoogLeNet achieved the highest F1-scores. Based on the average of true positive rate, MobileNet V3 predicted esophagitis more confidently than the other models. The results obtained using the models were also compared with those obtained using SHapley Additive exPlanations and Gradient-weighted Class Activation Mapping.",
+            "authors": [
+                "Kyoka Yoshiok",
+                "Kensuke Tanioka",
+                "S. Hiwa",
+                "Tomoyuki Hiroyasu"
+            ],
+            "year": 2023,
+            "citation_count": 4,
+            "influential_citation_count": 0,
+            "paper_id": "c1ebdc7fe66a9f8ba274c53baa450c18d53b7f44",
+            "url": "https://www.semanticscholar.org/paper/c1ebdc7fe66a9f8ba274c53baa450c18d53b7f44",
+            "pdf_url": "http://arxiv.org/pdf/2301.02390",
+            "publication_date": "2023-01-06T00:00:00",
+            "venue": "arXiv.org",
+            "publication_types": [
+                "JournalArticle"
+            ],
+            "external_ids": {
+                "ArXiv": "2301.02390",
+                "DBLP": "journals/corr/abs-2301-02390",
+                "DOI": "10.48550/arXiv.2301.02390",
+                "CorpusId": 255522609
+            },
+            "pdf_available": true,
+            "ranking_score": 0.7142,
+            "score_breakdown": {
+                "relevance": 1.0,
+                "recency": 0.73,
+                "citations": 0.233,
+                "author_score": 0.6,
+                "pdf_available": 1.0,
+                "total": 0.7142
+            },
+            "rank": 9
+        },
+        {
+            "title": "Data efficient deep learning for medical image analysis: A survey",
+            "abstract": "The rapid evolution of deep learning has significantly advanced the field of medical image analysis. However, despite these achievements, the further enhancement of deep learning models for medical image analysis faces a significant challenge due to the scarcity of large, well-annotated datasets. To address this issue, recent years have witnessed a growing emphasis on the development of data-efficient deep learning methods. This paper conducts a thorough review of data-efficient deep learning methods for medical image analysis. To this end, we categorize these methods based on the level of supervision they rely on, encompassing categories such as no supervision, inexact supervision, incomplete supervision, inaccurate supervision, and only limited supervision. We further divide these categories into finer subcategories. For example, we categorize inexact supervision into multiple instance learning and learning with weak annotations. Similarly, we categorize incomplete supervision into semi-supervised learning, active learning, and domain-adaptive learning and so on. Furthermore, we systematically summarize commonly used datasets for data efficient deep learning in medical image analysis and investigate future research directions to conclude this survey.",
+            "authors": [
+                "Suruchi Kumari",
+                "Pravendra Singh"
+            ],
+            "year": 2023,
+            "citation_count": 22,
+            "influential_citation_count": 0,
+            "paper_id": "f4708d1bf40efc655a58861c9ced43ee3fb4ba5e",
+            "url": "https://www.semanticscholar.org/paper/f4708d1bf40efc655a58861c9ced43ee3fb4ba5e",
+            "pdf_url": "https://arxiv.org/pdf/2310.06557",
+            "publication_date": "2023-10-10T00:00:00",
+            "venue": "arXiv.org",
+            "publication_types": [
+                "JournalArticle",
+                "Review"
+            ],
+            "external_ids": {
+                "ArXiv": "2310.06557",
+                "DBLP": "journals/corr/abs-2310-06557",
+                "DOI": "10.48550/arXiv.2310.06557",
+                "CorpusId": 263830273
+            },
+            "pdf_available": true,
+            "ranking_score": 0.7595,
+            "score_breakdown": {
+                "relevance": 1.0,
+                "recency": 0.73,
+                "citations": 0.4538,
+                "author_score": 0.5,
+                "pdf_available": 1.0,
+                "total": 0.7595
+            },
+            "rank": 6
+        },
+        {
+            "title": "EXACT: a collaboration toolset for algorithm-aided annotation of images with annotation version control",
+            "abstract": "In many research areas, scientific progress is accelerated by multidisciplinary access to image data and their interdisciplinary annotation. However, keeping track of these annotations to ensure a high-quality multi-purpose data set is a challenging and labour intensive task. We developed the open-source online platform EXACT (EXpert Algorithm Collaboration Tool) that enables the collaborative interdisciplinary analysis of images from different domains online and offline. EXACT supports multi-gigapixel medical whole slide images as well as image series with thousands of images. The software utilises a flexible plugin system that can be adapted to diverse applications such as counting mitotic figures with a screening mode, finding false annotations on a novel validation view, or using the latest deep learning image analysis technologies. This is combined with a version control system which makes it possible to keep track of changes in the data sets and, for example, to link the results of deep learning experiments to specific data set versions. EXACT is freely available and has already been successfully applied to a broad range of annotation tasks, including highly diverse applications like deep learning supported cytology scoring, interdisciplinary multi-centre whole slide image tumour annotation, and highly specialised whale sound spectroscopy clustering.",
+            "authors": [
+                "C. Marzahl",
+                "M. Aubreville",
+                "C. Bertram",
+                "Jennifer K. Maier",
+                "Christian Bergler",
+                "Christine Kröger",
+                "J. Voigt",
+                "Katharina Breininger",
+                "R. Klopfleisch",
+                "A. Maier"
+            ],
+            "year": 2020,
+            "citation_count": 41,
+            "influential_citation_count": 1,
+            "paper_id": "88ad68fd2a36916da11d6c74cd85761e5df317a6",
+            "url": "https://www.semanticscholar.org/paper/88ad68fd2a36916da11d6c74cd85761e5df317a6",
+            "pdf_url": "https://www.nature.com/articles/s41598-021-83827-4.pdf",
+            "publication_date": "2020-04-30T00:00:00",
+            "venue": "Scientific Reports",
+            "publication_types": [
+                "JournalArticle"
+            ],
+            "external_ids": {
+                "ArXiv": "2004.14595",
+                "PubMedCentral": "7902667",
+                "DOI": "10.1038/s41598-021-83827-4",
+                "CorpusId": 232039694,
+                "PubMed": "33623058"
+            },
+            "pdf_available": true,
+            "ranking_score": 0.5623,
+            "score_breakdown": {
+                "relevance": 0.4,
+                "recency": 0.46,
+                "citations": 0.541,
+                "author_score": 0.65,
+                "pdf_available": 1.0,
+                "total": 0.5623
+            },
+            "rank": 13
+        },
+        {
+            "title": "Hard Exudates Segmentation in Diabetic Retinopathy Using DiaRetDB1",
+            "abstract": "Diabetic retinopathy (DR) poses a major challenge in vision care, often leading to partial or complete limited vision in adults. Early and accurate detection of DR is essential for timely intervention and effective patient management. One critical aspect of DR diagnosis is identifying hard exudates in retinal images. Using deep tech or computer-aided methods, ophthalmologists can gain detailed insights into retinal health, facilitating precise diagnosis and treatment planning. However, the availability of medical image data in open datasets is often limited, making deep analysis challenging. To address this issue, we introduce a U-Net deep learning model, specifically modified and designed to segment hard exudates effectively, even with a limited dataset. In our study, the model is trained and tested on 89 original images from the DiaRetDB1 dataset, supplemented with augmented image to improve robustness. Despite the small dataset, our modified U-Net achieves high sensitivity, specificity, precision, and accuracy, culminating in an impressive F1 score of 0.9754. These results demonstrate the potential of our approach to improve DR diagnosis with limited resources. By adapting existing deep learning models, our research shows significant enhancements in diagnostic accuracy for DR. However, further validation with larger datasets and comparisons with other methods are necessary to confirm our findings. This study contributes to better detection of hard exudates in DR, ultimately leading to improved patient outcomes.",
+            "authors": [
+                "Yinghua Ma",
+                "Yang Heng",
+                "R. Amarnath",
+                "Zeng Hui"
+            ],
+            "year": 2024,
+            "citation_count": 9,
+            "influential_citation_count": 0,
+            "paper_id": "0afddfec026b18522a15d275fdd62e2ba92f2727",
+            "url": "https://www.semanticscholar.org/paper/0afddfec026b18522a15d275fdd62e2ba92f2727",
+            "pdf_url": "https://doi.org/10.1109/access.2024.3455433",
+            "publication_date": null,
+            "venue": "IEEE Access",
+            "publication_types": [
+                "JournalArticle"
+            ],
+            "external_ids": {
+                "DBLP": "journals/access/YinghuaHAH24",
+                "DOI": "10.1109/ACCESS.2024.3455433",
+                "CorpusId": 272437870
+            },
+            "pdf_available": true,
+            "ranking_score": 0.5773,
+            "score_breakdown": {
+                "relevance": 0.4,
+                "recency": 0.82,
+                "citations": 0.3333,
+                "author_score": 0.6,
+                "pdf_available": 1.0,
+                "total": 0.5773
+            },
+            "rank": 12
+        },
+        {
+            "title": "Lung pneumonia severity scoring in chest X-ray images using transformers",
+            "abstract": "To create robust and adaptable methods for lung pneumonia diagnosis and the assessment of its severity using chest X-rays (CXR), access to well-curated, extensive datasets is crucial. Many current severity quantification approaches require resource-intensive training for optimal results. Healthcare practitioners require efficient computational tools to swiftly identify COVID-19 cases and predict the severity of the condition. In this research, we introduce a novel image augmentation scheme as well as a neural network model founded on Vision Transformers (ViT) with a small number of trainable parameters for quantifying COVID-19 severity and other lung diseases. Our method, named Vision Transformer Regressor Infection Prediction (ViTReg-IP), leverages a ViT architecture and a regression head. To assess the model’s adaptability, we evaluate its performance on diverse chest radiograph datasets from various open sources. We conduct a comparative analysis against several competing deep learning methods. Our results achieved a minimum Mean Absolute Error (MAE) of 0.569 and 0.512 and a maximum Pearson Correlation Coefficient (PC) of 0.923 and 0.855 for the geographic extent score and the lung opacity score, respectively, when the CXRs from the RALO dataset were used in training. The experimental results reveal that our model delivers exceptional performance in severity quantification while maintaining robust generalizability, all with relatively modest computational requirements. The source codes used in our work are publicly available at https://github.com/bouthainas/ViTReg-IP.",
+            "authors": [
+                "Bouthaina Slika",
+                "F. Dornaika",
+                "H. Merdji",
+                "K. Hammoudi"
+            ],
+            "year": 2024,
+            "citation_count": 13,
+            "influential_citation_count": 0,
+            "paper_id": "eaac733e39aa694c16e0a69130e7b7125c81ed86",
+            "url": "https://www.semanticscholar.org/paper/eaac733e39aa694c16e0a69130e7b7125c81ed86",
+            "pdf_url": "https://doi.org/10.1007/s11517-024-03066-3",
+            "publication_date": "2024-04-09T00:00:00",
+            "venue": "Medical and Biological Engineering and Computing",
+            "publication_types": [
+                "JournalArticle"
+            ],
+            "external_ids": {
+                "PubMedCentral": "11289055",
+                "DBLP": "journals/mbec/SlikaDMH24",
+                "DOI": "10.1007/s11517-024-03066-3",
+                "CorpusId": 269007174,
+                "PubMed": "38589723"
+            },
+            "pdf_available": true,
+            "ranking_score": 0.5895,
+            "score_breakdown": {
+                "relevance": 0.4,
+                "recency": 0.82,
+                "citations": 0.382,
+                "author_score": 0.6,
+                "pdf_available": 1.0,
+                "total": 0.5895
+            },
+            "rank": 11
+        },
+        {
+            "title": "Deep Learning for Medical Image Analysis",
+            "abstract": "Seeking competent reading resources? We have deep learning for medical image analysis to review, not only check out, yet also download them or even review online. Find this great book writtern by by now, merely here, yeah just below. Get the files in the types of txt, zip, kindle, word, ppt, pdf, and also rar. Once again, never miss to review online and download this publication in our website right here. Click the link. GO TO THE TECHNICAL WRITING FOR AN EXPANDED TYPE OF THIS DEEP LEARNING FOR MEDICAL IMAGE ANALYSIS, ALONG WITH A CORRECTLY FORMATTED VERSION OF THE INSTANCE MANUAL PAGE ABOVE.",
+            "authors": [
+                "Çaglar Senaras",
+                "M. Gurcan"
+            ],
+            "year": 2018,
+            "citation_count": 12,
+            "influential_citation_count": 0,
+            "paper_id": "d01846b33fc09053d2bb4c9bcfc3d7b4af9203fe",
+            "url": "https://www.semanticscholar.org/paper/d01846b33fc09053d2bb4c9bcfc3d7b4af9203fe",
+            "pdf_url": "https://doi.org/10.4103/jpi.jpi_27_18",
+            "publication_date": "2018-01-01T00:00:00",
+            "venue": "Journal of Pathology Informatics",
+            "publication_types": [
+                "Review"
+            ],
+            "external_ids": {
+                "PubMedCentral": "6029009",
+                "MAG": "2811126861",
+                "DOI": "10.4103/JPI.JPI_27_18",
+                "CorpusId": 51704604
+            },
+            "pdf_available": true,
+            "ranking_score": 0.6488,
+            "score_breakdown": {
+                "relevance": 1.0,
+                "recency": 0.28,
+                "citations": 0.3713,
+                "author_score": 0.5,
+                "pdf_available": 1.0,
+                "total": 0.6488
+            },
+            "rank": 10
+        },
+        {
+            "title": "Secured DICOM medical image transition with optimized chaos method for encryption and customized deep learning model for watermarking",
+            "abstract": "The fields of telemedicine and aided medical diagnostics are benefiting greatly from medical imaging. For healthcare professionals to view patient medical images, a secure online transmitting technique is essential. The work introduces a DICOM image copyright protection by extended data encryption and watermarking technique with several potential applications in the medical field. Encrypting watermark images before embedding them into a DICOM cover images ensures the confidentiality of medical data, allowing for high-security access. Encryption here makes use of enhanced chaos with fruit fly optimization. The chaotic encryption technique makes use of the Lorenz map and a Customized Deep Learning Model (CDLM) based on Convolution Neural Networks (CNNs) are presented for watermarking. Multiple DICOM images with varying numbers of watermarks were used to evaluate the proposed model, and the resulting output was subjected to qualitative analysis using metrics such as MSE, SNR, PSNR, NC, and Q. Additionally, the requirements are satisfied for many assaults. In comparison to the state-of-the-art model, the suggested model performs better in every respect. Moreover, the approach provides impressive metrics such as MSE at 1.41E-06, SNR at 59.9876, PSNR at 60.3456, NC at 0.9989, and Q at 0.9992, showcasing its outstanding performance and reliability.",
+            "authors": [
+                "R. Abirami",
+                "C. Malathy"
+            ],
+            "year": 2025,
+            "citation_count": 3,
+            "influential_citation_count": 0,
+            "paper_id": "2bfa67ef61bd4b935aed1233994d90093ff7f8f9",
+            "url": "https://www.semanticscholar.org/paper/2bfa67ef61bd4b935aed1233994d90093ff7f8f9",
+            "pdf_url": "https://doi.org/10.1080/00051144.2025.2460877",
+            "publication_date": "2025-02-05T00:00:00",
+            "venue": "Automatika",
+            "publication_types": [
+                "JournalArticle"
+            ],
+            "external_ids": {
+                "DOI": "10.1080/00051144.2025.2460877",
+                "CorpusId": 276176318
+            },
+            "pdf_available": true,
+            "ranking_score": 0.7322,
+            "score_breakdown": {
+                "relevance": 1.0,
+                "recency": 0.91,
+                "citations": 0.2007,
+                "author_score": 0.5,
+                "pdf_available": 1.0,
+                "total": 0.7322
+            },
+            "rank": 8
+        },
+        {
+            "title": "AI-Based Breast Cancer Detection System: Deep Learning and Machine Learning Approaches for Ultrasound Image Analysis",
+            "abstract": "This work addresses the critical need for the early detection of breast cancer, a significant health concern worldwide. Using a combination of advanced deep learning and machine learning techniques, we offer a comprehensive solution to enhance breast cancer detection accuracy. By leveraging state-of-the-art convolutional neural networks (CNNs) like GoogLeNet, AlexNet, and ResNet18, alongside traditional classifiers such as k-nearest neighbors (KNN) and support vector machine (SVM), we ensure robust prediction capabilities. Our preprocessing methods significantly improve input data quality, leading to promising detection accuracies. For instance, ResNet-18 achieved impressive results, outperforming other models. Furthermore, our integration of these algorithms into a user-friendly MATLAB R2024b application ensures easy access for medical professionals, facilitating timely diagnosis and treatment. This work represents a vital step towards more effective breast cancer diagnosis, underscoring the importance of early intervention for improved patient outcomes.",
+            "authors": [
+                "Amro Moursi",
+                "Abdulrahman Aboumadi",
+                "U. Qidwai"
+            ],
+            "year": 2025,
+            "citation_count": 3,
+            "influential_citation_count": 1,
+            "paper_id": "96d5a569fbc37585ba4dbb08364426ed8047763e",
+            "url": "https://www.semanticscholar.org/paper/96d5a569fbc37585ba4dbb08364426ed8047763e",
+            "pdf_url": "https://doi.org/10.3390/info16040278",
+            "publication_date": "2025-03-30T00:00:00",
+            "venue": "Inf.",
+            "publication_types": [
+                "JournalArticle"
+            ],
+            "external_ids": {
+                "DBLP": "journals/information/MoursiAQ25",
+                "DOI": "10.3390/info16040278",
+                "CorpusId": 277490877
+            },
+            "pdf_available": true,
+            "ranking_score": 0.7472,
+            "score_breakdown": {
+                "relevance": 1.0,
+                "recency": 0.91,
+                "citations": 0.2007,
+                "author_score": 0.65,
+                "pdf_available": 1.0,
+                "total": 0.7472
+            },
+            "rank": 7
+        },
+        {
+            "title": "Automated Classification of Lung Cancer Subtypes Using Deep Learning and CT-Scan Based Radiomic Analysis",
+            "abstract": "Artificial intelligence and emerging data science techniques are being leveraged to interpret medical image scans. Traditional image analysis relies on visual interpretation by a trained radiologist, which is time-consuming and can, to some degree, be subjective. The development of reliable, automated diagnostic tools is a key goal of radiomics, a fast-growing research field which combines medical imaging with personalized medicine. Radiomic studies have demonstrated potential for accurate lung cancer diagnoses and prognostications. The practice of delineating the tumor region of interest, known as segmentation, is a key bottleneck in the development of generalized classification models. In this study, the incremental multiple resolution residual network (iMRRN), a publicly available and trained deep learning segmentation model, was applied to automatically segment CT images collected from 355 lung cancer patients included in the dataset “Lung-PET-CT-Dx”, obtained from The Cancer Imaging Archive (TCIA), an open-access source for radiological images. We report a failure rate of 4.35% when using the iMRRN to segment tumor lesions within plain CT images in the lung cancer CT dataset. Seven classification algorithms were trained on the extracted radiomic features and tested for their ability to classify different lung cancer subtypes. Over-sampling was used to handle unbalanced data. Chi-square tests revealed the higher order texture features to be the most predictive when classifying lung cancers by subtype. The support vector machine showed the highest accuracy, 92.7% (0.97 AUC), when classifying three histological subtypes of lung cancer: adenocarcinoma, small cell carcinoma, and squamous cell carcinoma. The results demonstrate the potential of AI-based computer-aided diagnostic tools to automatically diagnose subtypes of lung cancer by coupling deep learning image segmentation with supervised classification. Our study demonstrated the integrated application of existing AI techniques in the non-invasive and effective diagnosis of lung cancer subtypes, and also shed light on several practical issues concerning the application of AI in biomedicine.",
+            "authors": [
+                "Bryce Dunn",
+                "M. Pierobon",
+                "Qi Wei"
+            ],
+            "year": 2023,
+            "citation_count": 37,
+            "influential_citation_count": 1,
+            "paper_id": "96ff8ec854d9a97e6419653ceb8d9aaef5eb55c1",
+            "url": "https://www.semanticscholar.org/paper/96ff8ec854d9a97e6419653ceb8d9aaef5eb55c1",
+            "pdf_url": "https://www.mdpi.com/2306-5354/10/6/690/pdf?version=1686037635",
+            "publication_date": "2023-06-01T00:00:00",
+            "venue": "Bioengineering",
+            "publication_types": [
+                "JournalArticle"
+            ],
+            "external_ids": {
+                "PubMedCentral": "10295141",
+                "DOI": "10.3390/bioengineering10060690",
+                "CorpusId": 259269762,
+                "PubMed": "37370621"
+            },
+            "pdf_available": true,
+            "ranking_score": 0.7926,
+            "score_breakdown": {
+                "relevance": 1.0,
+                "recency": 0.73,
+                "citations": 0.5265,
+                "author_score": 0.65,
+                "pdf_available": 1.0,
+                "total": 0.7926
+            },
+            "rank": 5
+        },
+        {
+            "title": "Federated Learning for Medical Image Analysis with Deep Neural Networks",
+            "abstract": "Medical image analysis using deep neural networks (DNN) has demonstrated state-of-the-art performance in image classification and segmentation tasks, aiding disease diagnosis. The accuracy of the DNN is largely governed by the quality and quantity of the data used to train the model. However, for the medical images, the critical security and privacy concerns regarding sharing of local medical data across medical establishments precludes exploiting the full DNN potential for clinical diagnosis. The federated learning (FL) approach enables the use of local model’s parameters to train a global model, while ensuring data privacy and security. In this paper, we review the federated learning applications in medical image analysis with DNNs, highlight the security concerns, cover some efforts to improve FL model performance, and describe the challenges and future research directions.",
+            "authors": [
+                "S. Nazir",
+                "Mohammad Kaleem"
+            ],
+            "year": 2023,
+            "citation_count": 89,
+            "influential_citation_count": 1,
+            "paper_id": "d00eeb07d4215c2664db41315ae0a4b1254a2307",
+            "url": "https://www.semanticscholar.org/paper/d00eeb07d4215c2664db41315ae0a4b1254a2307",
+            "pdf_url": "https://www.mdpi.com/2075-4418/13/9/1532/pdf?version=1682337976",
+            "publication_date": "2023-04-24T00:00:00",
+            "venue": "Diagnostics",
+            "publication_types": [
+                "Review",
+                "JournalArticle"
+            ],
+            "external_ids": {
+                "PubMedCentral": "10177193",
+                "DOI": "10.3390/diagnostics13091532",
+                "CorpusId": 258343246,
+                "PubMed": "37174925"
+            },
+            "pdf_available": true,
+            "ranking_score": 0.8138,
+            "score_breakdown": {
+                "relevance": 1.0,
+                "recency": 0.73,
+                "citations": 0.6513,
+                "author_score": 0.55,
+                "pdf_available": 1.0,
+                "total": 0.8138
+            },
+            "rank": 4
+        },
+        {
+            "title": "A Review Paper about Deep Learning for Medical Image Analysis",
+            "abstract": "Medical imaging refers to the process of obtaining images of internal organs for therapeutic purposes such as discovering or studying diseases. The primary objective of medical image analysis is to improve the efficacy of clinical research and treatment options. Deep learning has revamped medical image analysis, yielding excellent results in image processing tasks such as registration, segmentation, feature extraction, and classification. The prime motivations for this are the availability of computational resources and the resurgence of deep convolutional neural networks. Deep learning techniques are good at observing hidden patterns in images and supporting clinicians in achieving diagnostic perfection. It has proven to be the most effective method for organ segmentation, cancer detection, disease categorization, and computer-assisted diagnosis. Many deep learning approaches have been published to analyze medical images for various diagnostic purposes. In this paper, we review the work exploiting current state-of-the-art deep learning approaches in medical image processing. We begin the survey by providing a synopsis of research works in medical imaging based on convolutional neural networks. Second, we discuss popular pretrained models and general adversarial networks that aid in improving convolutional networks' performance. Finally, to ease direct evaluation, we compile the performance metrics of deep learning models focusing on COVID-19 detection and child bone age prediction.",
+            "authors": [
+                "Bagher Sistaninejhad",
+                "Habib Rasi",
+                "Parisa Nayeri"
+            ],
+            "year": 2023,
+            "citation_count": 79,
+            "influential_citation_count": 0,
+            "paper_id": "1d98839c28886823a3693d07332d8cff013d236f",
+            "url": "https://www.semanticscholar.org/paper/1d98839c28886823a3693d07332d8cff013d236f",
+            "pdf_url": "https://downloads.hindawi.com/journals/cmmm/2023/7091301.pdf",
+            "publication_date": "2023-05-29T00:00:00",
+            "venue": "Computational and Mathematical Methods in Medicine",
+            "publication_types": [
+                "Review",
+                "JournalArticle"
+            ],
+            "external_ids": {
+                "PubMedCentral": "10241570",
+                "DOI": "10.1155/2023/7091301",
+                "CorpusId": 259088457,
+                "PubMed": "37284172"
+            },
+            "pdf_available": true,
+            "ranking_score": 0.8146,
+            "score_breakdown": {
+                "relevance": 1.0,
+                "recency": 0.73,
+                "citations": 0.6343,
+                "author_score": 0.6,
+                "pdf_available": 1.0,
+                "total": 0.8146
+            },
+            "rank": 3
+        },
+        {
+            "title": "A survey on Image Data Augmentation for Deep Learning",
+            "abstract": "Deep convolutional neural networks have performed remarkably well on many Computer Vision tasks. However, these networks are heavily reliant on big data to avoid overfitting. Overfitting refers to the phenomenon when a network learns a function with very high variance such as to perfectly model the training data. Unfortunately, many application domains do not have access to big data, such as medical image analysis. This survey focuses on Data Augmentation, a data-space solution to the problem of limited data. Data Augmentation encompasses a suite of techniques that enhance the size and quality of training datasets such that better Deep Learning models can be built using them. The image augmentation algorithms discussed in this survey include geometric transformations, color space augmentations, kernel filters, mixing images, random erasing, feature space augmentation, adversarial training, generative adversarial networks, neural style transfer, and meta-learning. The application of augmentation methods based on GANs are heavily covered in this survey. In addition to augmentation techniques, this paper will briefly discuss other characteristics of Data Augmentation such as test-time augmentation, resolution impact, final dataset size, and curriculum learning. This survey will present existing methods for Data Augmentation, promising developments, and meta-level decisions for implementing Data Augmentation. Readers will understand how Data Augmentation can improve the performance of their models and expand limited datasets to take advantage of the capabilities of big data.",
+            "authors": [
+                "Connor Shorten",
+                "T. Khoshgoftaar"
+            ],
+            "year": 2019,
+            "citation_count": 10843,
+            "influential_citation_count": 270,
+            "paper_id": "3813b88a4ec3c63919df47e9694b577f4691f7e5",
+            "url": "https://www.semanticscholar.org/paper/3813b88a4ec3c63919df47e9694b577f4691f7e5",
+            "pdf_url": "https://journalofbigdata.springeropen.com/track/pdf/10.1186/s40537-019-0197-0",
+            "publication_date": "2019-07-06T00:00:00",
+            "venue": "Journal of Big Data",
+            "publication_types": [
+                "JournalArticle",
+                "Review"
+            ],
+            "external_ids": {
+                "MAG": "2954996726",
+                "DBLP": "journals/jbd/ShortenK19",
+                "DOI": "10.1186/s40537-019-0197-0",
+                "CorpusId": 195811894
+            },
+            "pdf_available": true,
+            "ranking_score": 0.864,
+            "score_breakdown": {
+                "relevance": 1.0,
+                "recency": 0.37,
+                "citations": 1.0,
+                "author_score": 0.9,
+                "pdf_available": 1.0,
+                "total": 0.864
+            },
+            "rank": 2
+        },
+        {
+            "title": "Self-supervised learning for medical image classification: a systematic review and implementation guidelines",
+            "abstract": "Advancements in deep learning and computer vision provide promising solutions for medical image analysis, potentially improving healthcare and patient outcomes. However, the prevailing paradigm of training deep learning models requires large quantities of labeled training data, which is both time-consuming and cost-prohibitive to curate for medical images. Self-supervised learning has the potential to make significant contributions to the development of robust medical imaging models through its ability to learn useful insights from copious medical datasets without labels. In this review, we provide consistent descriptions of different self-supervised learning strategies and compose a systematic review of papers published between 2012 and 2022 on PubMed, Scopus, and ArXiv that applied self-supervised learning to medical imaging classification. We screened a total of 412 relevant studies and included 79 papers for data extraction and analysis. With this comprehensive effort, we synthesize the collective knowledge of prior work and provide implementation guidelines for future researchers interested in applying self-supervised learning to their development of medical imaging classification models.",
+            "authors": [
+                "Shih-Cheng Huang",
+                "A. Pareek",
+                "Malte E. K. Jensen",
+                "M. Lungren",
+                "Serena Yeung",
+                "A. Chaudhari"
+            ],
+            "year": 2023,
+            "citation_count": 386,
+            "influential_citation_count": 14,
+            "paper_id": "011982dc2b422bbbf1b0e3b8874d8d4f1b2027f2",
+            "url": "https://www.semanticscholar.org/paper/011982dc2b422bbbf1b0e3b8874d8d4f1b2027f2",
+            "pdf_url": "https://www.nature.com/articles/s41746-023-00811-0.pdf",
+            "publication_date": "2023-04-26T00:00:00",
+            "venue": "npj Digit. Medicine",
+            "publication_types": [
+                "Review",
+                "JournalArticle"
+            ],
+            "external_ids": {
+                "PubMedCentral": "10131505",
+                "DBLP": "journals/npjdm/HuangPJLYC23",
+                "DOI": "10.1038/s41746-023-00811-0",
+                "CorpusId": 258355151,
+                "PubMed": "37100953"
+            },
+            "pdf_available": true,
+            "ranking_score": 0.9116,
+            "score_breakdown": {
+                "relevance": 1.0,
+                "recency": 0.73,
+                "citations": 0.8624,
+                "author_score": 1.0,
+                "pdf_available": 1.0,
+                "total": 0.9116
+            },
+            "rank": 1
+        }
+    ]
+}

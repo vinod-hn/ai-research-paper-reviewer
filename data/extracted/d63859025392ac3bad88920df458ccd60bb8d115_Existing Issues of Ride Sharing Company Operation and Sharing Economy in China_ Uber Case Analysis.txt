@@ -1,0 +1,229 @@
+Existing Issues of Ride Sharing Company Operation and Sharing 
+Economy in China: Uber Case Analysis 
+Xing-Yue Zhao1,a  and Qin Su2,b 
+1&2State Key Laboratory for Manufacturing Systems Engineering, Xi’an Jiaotong University, China 
+azhaotlf@163.com, bqinsu@mail.xjtu.edu.cn 
+Xingyue Zhao 
+Keywords: Ride sharing market, the Sharing company in China, Uber analysis. 
+Abstract. Under the background of the growth of sharing economy, the number of emerging 
+companies increased in the past decade. As emerging companies, the legality and competitions with 
+relevant industries are subject to dispute. This paper analyzes potential issues and causes of these issues 
+in the operation of these companies from business and enterprise perspectives. The article is taking 
+Uber as an example and accordingly present the solutions and implementations to existing problems of 
+the future. This paper also extends to the current and future situation of sharing economy for Chinese 
+enterprise.  
+1. Background  
+In 2009, Travis Kalanick and Garrett Camp funded Uber to connect passengers with drivers by using 
+smartphone app after experiencing the dilemma of finding a taxi in Paris, whose mission is to connect 
+people that need a reliable ride with people looking to earn money driving their car [1]. Two years later, 
+UberCab was officially launched as a private luxury car service in San Francisco. Passengers are able 
+to make reservations by downloading the app and track divers’ location on that with the estimated 
+prices based on the time or distances of the rides and passengers are able to use cashless payment [2]. 
+However, after UberCab was launched onto the market, it received cease-and-desist letters in 
+operating without the taxi license. Kalanick argued that the company is a provider who connected 
+passengers with drivers, instead of actually operating as a taxi company and officially changed the 
+name from Ubercab to Uber. Until 2015, Uber still was facing a series of resisting from regulators, 
+politicians, and the taxi industry. Uber was banned by some countries and treated as an illegal taxi 
+service. Also, the battle between Uber and public relations become increasingly intense.  
+Even with all those challenges, Uber reported that it still had 2 million reservations per day in 2015 
+[3]. At the end of 2015, Uber became a global player, who had more than 1 million activity drivers in 
+more than 60 countries [3]. Uber is trying to launch new services like UberPOOL, driverless car 
+initiative, and UberEATS to diversify their products and maximize market share [1].    
+2. Analysis of Problem and Problem Statement 
+The nature of Uber is media of connecting passengers and drivers by Internet app. In the process of 
+development, Uber has been facing some rigorous issues, including the violation of local regulations, 
+battles with the taxi industry, surge pricing policy, and overly aggressive market tactics. 
+2.1. The Violation of Local Regulation 
+The initial expansion of Uber was too fast to follow the legal systems and local governmental 
+regulations, which resulted in illegal operations and unfair competitions. The startup rapidly grew with 
+venture investment to spread its business all over the world and attained enough profits to resist laws 
+and regulations. Together with the unclear legality for new things, Uber ignored all the rules based on 
+5th Annual International Conference on Management, Economics and Social Development (ICMESD 2019) 
+Copyright © 2019, the Authors. Published by Atlantis Press. 
+This is an open access article under the CC BY-NC license (http://creativecommons.org/licenses/by-nc/4.0/).
+Advances in Economics, Business and Management Research, volume 87
+348
+
+its strong capital. After a few months of operation, Uber was warned and required to cease all 
+operations due to the lack of taxi licenses by the California Public Utilities Commission and the San 
+Francisco Municipal Transportation Agency [3]. Uber reacted to this warning by changing the 
+company name and ignoring the punishment orders. Furthermore, because of the large amount of 
+financing, Uber was able to design the extremely low price with coupons and discounts for customers 
+at the time of entering the market and unfairly competing with competitors. Uber’s violation of 
+regulations had invidiously expelled rivals and disrupted the market order. 
+2.2. Battles with the Taxi Industry 
+Battles between Uber and taxi companies fully broke out in 2015 because Uber had taken customers 
+from taxi drivers and made them difficult to survive. In the Netherlands and South Korea, for instance, 
+Uber was regarded as illegal car service and would be forbidden. Moreover, strikes and protest against 
+Uber were erupted in some regions and sometimes gone violence. People were not satisfied with the 
+deregulation of Uber, the unfair competitions and hoping it could be regulated and supervised. The 
+rules and regulations of taxi industry require that every single vehicle in operation has to have 
+operation medallions and then allowed to dispatch and pick up passengers on the street. Uber, other the 
+other side, was doing the taxi business without the business license in this industry. Also, it is a 
+complex process to be a taxi driver with a license and medallions, so that the taxi industry was a 
+winner-take-all industry where top drivers could get high payments but lower-level ones were paid few 
+wages. The appearance of Uber completely broke the traditional model of the taxi industry, whose 
+interest was badly damaged[4]. The pre-conditions of Uber drivers are much simpler that almost 
+everyone could be qualified for a smartphone and a vehicle. Therefore, the conflicts between Uber and 
+the taxi industry continuously upgraded were inevitable. Besides the taxi industry, Uber also had other 
+competitors in the market such as limousine and black town car service, and other ride-sharing services 
+such as Lyft and Sidecar [3]. 
+2.3. Surge Pricing Policy 
+Customers complained about the surge pricing police Uber was using during the rush hours, peak times 
+and seasonal index, car service would charge several times the normal price [5]. “Surge Pricing” could 
+be 1.5 to 7 times of the normal price in Festivals like New Year’s Eve and bad-weather days such as 
+winter snow storms, which dissatisfied the customers that then accused Uber of exploitation. For Uber 
+drivers, they were contract workers and got 80% or less payment of what passengers paid because Uber 
+Company demanded to collect 20% to 30% payment for its commission. Thus drivers were also under 
+a feeling of being exploited.  
+2.4. Overly Aggressive Market Tactics 
+Uber rampantly expand new markets without considering local laws and regulations, and could not 
+wait to operate after permission. The company was discovered to damage other ride-sharing rivals by 
+black-box operations. What was more, Uber poach drivers from peer companies with inducements of 
+high bonus and incentives, which aggressively enlarged the unfair competitions by unethical business 
+behaviors. 
+3. Market Analysis  
+3.1. Market Strengths   
+Under the so-called sharing economy, Uber was able to occupy up to 69% market share in the United 
+States due to its efficiency and convenience and with strong brand recognition [6]. The process of the 
+Uber app is simple and friendly to all customers, which cultivated loyal customers and spread all over 
+the world. Now, Uber has the largest market share in the sharing economy market, as it positioned itself 
+Advances in Economics, Business and Management Research, volume 87
+349
+
+across the world. Because of the features of Uber, the company has low operation costs and fixed 
+equipment investments, which reflects on customers at a lower price than the taxi. With above 
+strengths, Uber has some opportunities to gain more market share by developing some new markets, 
+encourage electric or hybrid vehicle, and driver-less-car initiative, which has already begin at the time 
+of the case study. The products and services are more diversified currently. Besides Ride, Drive and 
+Eat, Uber also diversified products into Freight and Health market. The ongoing program of Uber is Air, 
+which is expecting to change urban mobility in the future.    
+3.2 Market Weaknesses   
+The legality of Uber was being questioned all the time. Because of the unique service features, the 
+services of Uber provided are hard to define and classify, which makes industry specifications and 
+standers unclear. These unclear and uncertain are the reasons why that controversy of Uber never 
+stopped and even became more intense. For the same reason, Uber has low market barriers to entry, 
+high variable costs and low economic scales with rivals, Uber implied cost leader strategy in the past 
+by offering coupons and bonuses. Additionally, the financial report of Uber remained deep in red in 
+ever since Uber was funded. The compete substantial loss is a negative sign for investors in the capital 
+market. Moreover, multiple scandals such as sexual harassment and targeted attack were reported 
+which resulted in a public safety concern, the resignation of a funder, and harmed public image that 
+Uber is not controlled by itself, but dependent on the workforce instead. At the time the of case, both of 
+the drivers and passengers were revolting from the taxi industry to Uber. However, Uber is facing them 
+churn to other competitors currently due to the higher commission cut collected by Uber and negative 
+public relationships and image. 
+4. Solutions and Implementations 
+4.1. Positive Image from the Perspective of Customers and Users  
+Comparing to the taxi industry, the services Uber provided are simpler, more convenience and more 
+private. Customers are able to make comments about the services they received, which is one of the 
+methods for Uber to build customer relationships to their targeted and potential customers. For Uber’s 
+users, Uber drivers, the average hourly earnings of Uber drivers were $6.29 higher than taxi drivers due 
+to that taxi drivers are required to pay for operation medallions and other leasing payments in 2015 [3]. 
+Under this situation, a lot of taxi drivers escaping to Uber was understandable. In sharing economy, 
+Uber gives access to everyone to be a driver at any time and make vehicles available for passengers 
+anywhere.   
+In addition, Uber established a positive reputation among most consumers because the company 
+brought great convenience and lots of benefits to the public improving their experiences, which 
+together brought a certain amount of devotees and loyal customers. In other words, many customers 
+gave high rates to Uber, just as a journalist commented that Uber had replaced taxi and greatly changed 
+people’s life [3]. Uber had also constructed a positive image based on supportive drivers and customers. 
+4.2. Diversified and Valuable Services   
+In order to turn negative impacts brought by surge pricing policy and multiple scandals , Uber launched 
+Uber X, which is one of the cheaper and more valuable services and allowed the use of non-
+professional drivers and personal cars, UberBlack for commercial use, UberXLin 2015 of larger and 
+cheaper vehicles for six people, UberSUV, etc. Another noteworthy service is UberPOOL providing 
+sharing rides to passengers in the same routes with a much cheaper rate which soon became a popular 
+service that occupied about half of the rides in San Francisco [3].  
+At the end of 2016, Uber revolutionized the mobile app to control the surging prices and make 
+pricing policy more transparent. By doing that, passengers were able to have knowledge about different 
+Advances in Economics, Business and Management Research, volume 87
+350
+
+prices of all different services Uber provided before decision making. The new app could also mark the 
+most visited locations and design routines according to that.  
+4.3. Using Public Relations to Mitigate Market Aggression 
+Uber conducted public relations for its high pricing strategy. It guaranteed people that the charge would 
+be lower than 2.8x in rush hours, and apologized and compensated the surcharges 4x for passengers in 
+the 2014 Sydney hostage crisis.  
+In the same year, Uber employed David Plouffe, a well-known political strategist to fugle public 
+relations management and communication functions for the company in order to promote products 
+from a political perspective.  
+4.4. Acquisitions and Self-Driving Car 
+The Chinese market of Uber was acquired by Didi Chuxing, who was the biggest competitor in the 
+Chinese market in 2016, which made Uber become the biggest shareholder of Didi Chuxing. This 
+acquisition not only cut off losses due to the price war in the past two years, but it also allowed the 
+company to concentrate on other market segments [7]. Didi Chuxing now has the largest market share 
+in the Chinese market and even raises doubts about industry monopoly. Additionally, Uber has begun 
+the unmanned driving test and auto-pilot in 2016, which was expecting to reduce traffic accidents, 
+cutting congestion and saving spaces.  
+5. Sharing Economy for Chinese Enterprise 
+The growth of the sharing economy in China was faster than expected in the past ten years. The 
+particular economic and social situation created the base of the sharing economy development in China. 
+Products and concepts like shared bicycle, shared charging treasure and shared vehicle were putting 
+onto the market and accepted by the public. The relatively good basic moral literacy and the conditions 
+of dense population density have allowed the sharing economy to grow rapidly in China. Another 
+condition is that productivity is developed with uneven distribution. The sharing economy not only 
+solves the problem of over-production of resources but also allocates resources to those in need through 
+the medium of sharing the platform. The nature of the sharing economy is demanding match. The most 
+important point is that China is popular with collectivism and is more keen to share. It is easy to accept 
+such products that are shared with others. The growth rate of enterprises who were built upon the 
+concepts on sharing economy in China was much faster than before because of the switch from PC 
+Internet era to mobile Internet base, which is conducive to business development but also a huge 
+obstacle.  
+After 2016, the depression of the sharing economy came to the market all of a sudden. The reasons 
+for the depression are complicated, including capital flight, the vicious cycle of cash flow, embezzling 
+and failure of management control. According to the data from Tencent, at the end of October 2015, the 
+number of bicycles produced by ofo, which is a bicycle sharing company in China, was only 20,000, 
+and this number had rapidly climbed to 23 million by 2017. Behind the frenzied expansion is the 
+financing recourses delivered by investors. In 2016, there were more than 20 sharing bicycle companies 
+existed in the market at the same time. The total financing of these companies exceeded 3 billion yuan 
+within one year. The scale of users has also grown exponentially. In 2016, the number of users sharing 
+bicycles reached 18.9 million, an increase of 700% year-on-year. Only one year later, more companies 
+joined the failure of ofo, with very similar reasons including capital chain fracture, inappropriate 
+operating, cash flow break without now financing resources.  
+After experiencing explosive growth in the early stage in China, various types of sharing companies 
+have experienced different levels of operational difficulties. Problems such as the difficulty of 
+refunding some corporate deposits have gradually emerged. After the exit of capital investments, the 
+Advances in Economics, Business and Management Research, volume 87
+351
+
+biggest issue of sharing companies in China is finding alternatives to fill the gap. Because of the small 
+market capacity and heavy capital input early, most of the sharing companies in China are experiencing 
+depression. In the long run, sharing companies need to return to the correct business model and track.  
+6. Conclusion  
+At the time of the case study, Uber was considered as a successful company with controversial. After 
+five years of operations, Uber was valued by investors at $51 billion, who was more valuable than the 
+two third of the Fortune 500 [8]. However, Uber is facing a more serious market environment and 
+company situation at this time. The business development did not match with the expectations in Asian, 
+especially Chinese and India market. Meanwhile, the ambiguities of political and regulation legality 
+brought disputable arguments and influences to the company, which consequently impact the public 
+relations and customer relationship.  
+Even with all of the controversies and competitors, it cannot be denied that the funding of Uber 
+changed trip mode all over the world and it still is an active company in the market with high 
+smartphone app download times and rate. The new services Uber are experiencing like Uber Health 
+and Uber Air to point out the future possible directions for the company.  
+As an emerging market, the sharing economy is still facing many challenges, which are similar with 
+Uber, including inadaptability of laws and regulations, urgent need to establish a statistical monitoring 
+system and protection of customers rights. Besides the above, from the perspective of entrepreneurs, 
+the understanding of the operations and rules in the capital market become more valuable. Although 
+some sharing companies are experiencing depression in China, the general development trend of 
+sharing economy is still believed to be potential and bright. With the rapid advancement of mobile 
+Internet, the sharing economy in China is expected to maintain an average annual growth rate of more 
+than 30% in the next five years[9].  
+7. Reference 
+[1] Uber. Retrieved from https://www.uber.com, 2019 
+[2] Damodaran, A. A Disruptive Cab Ride to Riches: The Uber Payoff. Forbes, June 2014.  
+[3] Moon, Y 2015, Uber: Changing the Way the World Moves. Harvard Business School, Case, (9-
+316), p. 101. 
+[4] Angrist, J. Caldwell, S. Hall, J: Uber VS. Taxi: A Driver’s Eye View. National Bureau of Economic 
+Research, Sep 2017. Revised Oct 2017.  
+[5] Chen, MK. Sheldon, M. Dynamic Pricing in a Labor Market: Surge Pricing and Flexible Work on 
+the Uber Platform. Acm Conference on Economics & Computation, Dec 2015. 
+[6] Iqbal, M. Uber Revenue and Usage Statics (2019). Business of APP, May 2019.  
+[7] Wirtz, J. Tang, C. Uber: Competing as Market Leader in the U.S. versus Being a Distant Second in 
+China. March 2016.  
+[8] Griffith, E. Uber is now more valuable than at least 72% of the Fortune 500. Sec, 2014 
+[9] Economic Daily, Chinese Annual Report on Sharing Economic Development. National Information 
+Center, 2018. 
+Advances in Economics, Business and Management Research, volume 87
+352
