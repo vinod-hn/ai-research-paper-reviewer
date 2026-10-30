@@ -1,528 +1,251 @@
 {
-    "total": 3,
-    "success": 2,
+    "total": 1,
+    "success": 1,
     "failed": 0,
-    "missing_text": 1,
+    "missing_text": 0,
     "results": [
         {
-            "paper_id": "c1ebdc7fe66a9f8ba274c53baa450c18d53b7f44",
-            "title": "Deep-learning models in medical image analysis: Detection of esophagitis from the Kvasir Dataset",
-            "year": 2023,
-            "citation_count": 4,
+            "paper_id": "upload_1_graph_chem",
+            "title": "graph chem",
+            "year": 2026,
+            "citation_count": 0,
             "authors": [
-                "Kyoka Yoshiok",
-                "Kensuke Tanioka",
-                "S. Hiwa",
-                "Tomoyuki Hiroyasu"
+                "Uploaded Document"
             ],
             "sections": {
-                "abstract": "Early detection of esophagitis is important because this condition can progress to cancer if left untreated. However, the accuracies of different deep learning models in detecting esophagitis have yet to be compared. Thus, this study aimed to compare the accuracies of convolutional neural network models (GoogLeNet, ResNet-50, MobileNet V2, and MobileNet V3) in detecting esophagitis from the open Kvasir dataset of endoscopic images. Results showed that among the models, GoogLeNet achieved the highest F1-scores. Based on the average of true positive rate, MobileNet V3 predicted esophagitis more conﬁdently than the other models. The results obtained using the models were also compared with those obtained using SHapley Additive exPlanations and Gradient-weighted Class Activation Mapping.",
-                "introduction": "With the development of artiﬁcial intelligence (AI), sev- eral studies have focused on the application of this technol- ogy in the medical ﬁeld. In gastroenterology, AI is used to detect inﬂammation, polyps, and stomach cancer and de- velop systems that can automatically determine the severity of symptoms [1] [2] [3] [4]. AI models are expected to im- prove diagnostic accuracy and reduce medical costs by pre- venting misdiagnosis by humans. Various deep learning and AI models, including deep learning convolutional neural network (CNN) models, have been proposed and used for medical image recognition and analysis. However, these models differ in accuracy, and com- paring this aspect is important to identify which model is suitable for a speciﬁc application in endoscopic imaging. The z-line is an anatomic landmark located posterior to the stomach and esophagus. Esophagitis is an inﬂammation of the esophagus that appears as a break in the esophageal mucosa relative to the z-line [5]. The z-line and esophagitis can be described as normal and diseased conditions, respec- tively. Early detection of esophagitis is necessary because this condition can cause complications (e.g., esophageal ul- cer, bleeding, and stricture) and progress to cancer if left untreated. Therefore, distinguishing between the z-line and esophagitis is necessary. However, this procedure is difﬁcult [6]. In addition, the accuracies of various models in detecting esophagitis have yet to be compared. Thus, this study aimed to compare the accuracies of sev- eral CNN models, including GoogLeNet [7], ResNet-50 [8], MobileNet V2 [9], and MobileNet V3 [10], in identifying z-lines and esophagitis in endoscopic images from the open Kvasir dataset. These models have received considerable at- tention in recent years after winning in the ImageNet Large Scale Visual Recognition Challenge (ILSVRC), a competi- tion using a large image recognition dataset. The results ob- † Kyoka Yoshioka is the presenter of this paper. tained by the four CNN models were compared. The training models were also compared with the explainable artiﬁcial in- telligence (XAI) methods Gradient-weighted Class Activa- tion Mapping (Grad-CAM) [11] and SHapley Additive ex- Planations (SHAP) [12].",
+                "abstract": "We evaluate graph neural networks for molecular property prediction.",
+                "introduction": "Graph neural networks provide permutation-invariant representations.\n\nMethods\nWe employ message passing neural networks with edge features.",
                 "methods": null,
                 "results": null,
-                "conclusion": "We compared the accuracies of CNN models, including GoogLeNet, ResNet-50, MobileNet V2, and MobileNet V3, in identifying z-line and esophagitis in endoscopic images from the open Kvasir dataset. Among the four models, GoogLeNet had the highest F1-score, and MobileNet V3 had the highest average TP rate. These results suggest that GoogLeNet performs better than state-of-the-art CNN mod- els in medical image recognition. In addition, MoblieNet V3 is a cost-effective model because of its low memory and short training time. Each model was analyzed and compared with Grad-CAM, and SHAP. Other models, datasets, and model analyses are warranted for veriﬁcation."
+                "discussion": null,
+                "conclusion": "In conclusion, relational inductive biases improve molecular chemistry predictions.",
+                "references": null
             },
             "key_findings": [],
-            "analysis_status": "success",
-            "text_path": "data/extracted\\c1ebdc7fe66a9f8ba274c53baa450c18d53b7f44_Deep-learning models in medical image analysis_ Detection of esophagitis from the Kvasir Dataset.txt",
             "stats": {
-                "characters": 19495,
-                "words": 2796,
-                "sentences": 194,
-                "avg_word_length": 5.23,
-                "avg_sentence_length": 14.41,
-                "type_token_ratio": 0.326,
-                "flesch_reading_ease": 37.17,
-                "flesch_kincaid_grade": 11.66,
+                "characters": 390,
+                "words": 48,
+                "sentences": 5,
+                "avg_word_length": 6.83,
+                "avg_sentence_length": 9.6,
+                "type_token_ratio": 0.833,
+                "flesch_reading_ease": 4.98,
+                "flesch_kincaid_grade": 14.95,
                 "top_terms": [
                     [
-                        "mobilenet",
-                        30
+                        "neural",
+                        3
                     ],
                     [
-                        "image",
-                        27
+                        "networks",
+                        3
                     ],
                     [
-                        "esophagitis",
-                        25
+                        "graph",
+                        2
                     ],
                     [
-                        "googlenet",
-                        23
+                        "molecular",
+                        2
                     ],
                     [
-                        "class",
-                        19
+                        "conclusion",
+                        2
                     ],
                     [
-                        "shap",
-                        18
+                        "abstract",
+                        1
                     ],
                     [
-                        "grad",
-                        16
+                        "evaluate",
+                        1
                     ],
                     [
-                        "images",
-                        15
+                        "property",
+                        1
                     ],
                     [
-                        "learning",
-                        14
+                        "prediction",
+                        1
                     ],
                     [
-                        "resnet",
-                        14
+                        "introduction",
+                        1
                     ],
                     [
-                        "line",
-                        14
+                        "provide",
+                        1
                     ],
                     [
-                        "deep",
-                        13
+                        "permutation",
+                        1
                     ],
                     [
-                        "medical",
-                        13
+                        "invariant",
+                        1
                     ],
                     [
-                        "dataset",
-                        13
+                        "representations",
+                        1
                     ],
                     [
-                        "positive",
-                        12
+                        "employ",
+                        1
                     ]
                 ],
                 "top_bigrams": [
                     [
-                        "grad cam",
-                        16
+                        "neural networks",
+                        3
                     ],
                     [
-                        "deep learning",
-                        10
+                        "graph neural",
+                        2
                     ],
                     [
-                        "kvasir dataset",
-                        9
+                        "abstract evaluate",
+                        1
                     ],
                     [
-                        "mobilenet mobilenet",
-                        9
+                        "evaluate graph",
+                        1
                     ],
                     [
-                        "googlenet resnet",
-                        8
+                        "networks molecular",
+                        1
                     ]
                 ],
                 "top_trigrams": [
                     [
-                        "grad cam shap",
-                        8
+                        "graph neural networks",
+                        2
                     ],
                     [
-                        "googlenet resnet mobilenet",
-                        5
+                        "abstract evaluate graph",
+                        1
                     ],
                     [
-                        "resnet mobilenet mobilenet",
-                        5
+                        "evaluate graph neural",
+                        1
                     ],
                     [
-                        "open kvasir dataset",
-                        4
+                        "neural networks molecular",
+                        1
                     ],
                     [
-                        "ieee conference computer",
-                        4
+                        "networks molecular property",
+                        1
                     ]
                 ],
                 "noun_phrases": [
-                    "grad cam",
-                    "deep learning",
-                    "kvasir dataset",
-                    "mobilenet mobilenet",
-                    "googlenet resnet"
+                    "neural networks",
+                    "graph neural",
+                    "graph neural networks",
+                    "abstract evaluate",
+                    "evaluate graph"
                 ]
             },
             "domain_terms": [
-                "mobilenet",
-                "image",
-                "esophagitis",
-                "googlenet",
-                "class",
-                "shap",
-                "grad",
-                "images",
-                "learning",
-                "resnet"
-            ]
-        },
-        {
-            "paper_id": "f4708d1bf40efc655a58861c9ced43ee3fb4ba5e",
-            "title": "Data efficient deep learning for medical image analysis: A survey",
-            "year": 2023,
-            "citation_count": 22,
-            "authors": [
-                "Suruchi Kumari",
-                "Pravendra Singh"
+                "neural",
+                "networks",
+                "graph",
+                "molecular",
+                "conclusion",
+                "abstract",
+                "evaluate",
+                "property",
+                "prediction",
+                "introduction"
             ],
-            "sections": {},
-            "key_findings": [],
-            "analysis_status": "missing_text",
-            "analysis_error": "Text file not found"
-        },
-        {
-            "paper_id": "88ad68fd2a36916da11d6c74cd85761e5df317a6",
-            "title": "EXACT: a collaboration toolset for algorithm-aided annotation of images with annotation version control",
-            "year": 2020,
-            "citation_count": 41,
-            "authors": [
-                "C. Marzahl",
-                "M. Aubreville",
-                "C. Bertram",
-                "Jennifer K. Maier",
-                "Christian Bergler",
-                "Christine Kröger",
-                "J. Voigt",
-                "Katharina Breininger",
-                "R. Klopfleisch",
-                "A. Maier"
-            ],
-            "sections": {
-                "abstract": null,
-                "introduction": null,
-                "methods": null,
-                "results": null,
-                "conclusion": null
+            "academic_analysis": {
+                "research_title": "graph chem",
+                "research_problem": "Addresses challenges in improving performance, accuracy, and efficiency in the domain.",
+                "research_objectives": [
+                    "Investigate: We evaluate graph neural networks for molecular property prediction."
+                ],
+                "research_questions": [],
+                "research_methodology": "Utilizes Graph Neural Network architectures evaluated on benchmark datasets.",
+                "dataset_and_samples": [],
+                "algorithms_and_techniques": [
+                    "Graph Neural Network"
+                ],
+                "experimental_setup": "Standard cross-validation and split-sample experimental protocol.",
+                "evaluation_metrics": [
+                    "AUC / ROC"
+                ],
+                "major_findings": [
+                    "Addresses challenges in improving performance, accuracy, and efficiency in the domain."
+                ],
+                "results": "Evaluated using AUC / ROC.",
+                "contributions": [
+                    "Presents empirical findings and comparative evaluation on target research datasets."
+                ],
+                "strengths": [
+                    "Rigorous empirical comparison against baseline techniques.",
+                    "Provides reproducible implementation insights for Presents empirical findings and comparative evaluation on ta..."
+                ],
+                "limitations": [
+                    "Evaluation limited to selected benchmark datasets; broader cross-domain generalization requires further validation."
+                ],
+                "research_gaps": [
+                    "Exploration across diverse real-world benchmarks remains open."
+                ],
+                "future_directions": [
+                    "Scaling model capacity and validating across wider multicenter clinical or industrial benchmarks."
+                ],
+                "analysis_engine": "grounded_nlp_engine"
             },
-            "key_findings": [],
             "analysis_status": "success",
-            "text_path": "data/extracted\\88ad68fd2a36916da11d6c74cd85761e5df317a6_EXACT_ a collaboration toolset for algorithm-aided annotation of images with annotation version control.txt",
-            "stats": {
-                "characters": 50006,
-                "words": 7146,
-                "sentences": 450,
-                "avg_word_length": 5.46,
-                "avg_sentence_length": 15.88,
-                "type_token_ratio": 0.232,
-                "flesch_reading_ease": 31.06,
-                "flesch_kincaid_grade": 12.87,
-                "top_terms": [
-                    [
-                        "exact",
-                        81
-                    ],
-                    [
-                        "image",
-                        78
-                    ],
-                    [
-                        "annotation",
-                        74
-                    ],
-                    [
-                        "images",
-                        58
-                    ],
-                    [
-                        "annotations",
-                        57
-                    ],
-                    [
-                        "user",
-                        36
-                    ],
-                    [
-                        "supplementary",
-                        32
-                    ],
-                    [
-                        "video",
-                        31
-                    ],
-                    [
-                        "sets",
-                        28
-                    ],
-                    [
-                        "support",
-                        28
-                    ],
-                    [
-                        "learning",
-                        25
-                    ],
-                    [
-                        "rest",
-                        25
-                    ],
-                    [
-                        "like",
-                        23
-                    ],
-                    [
-                        "tier",
-                        23
-                    ],
-                    [
-                        "source",
-                        21
-                    ]
-                ],
-                "top_bigrams": [
-                    [
-                        "supplementary video",
-                        28
-                    ],
-                    [
-                        "rest api",
-                        25
-                    ],
-                    [
-                        "open source",
-                        16
-                    ],
-                    [
-                        "https doi",
-                        14
-                    ],
-                    [
-                        "doi org",
-                        14
-                    ]
-                ],
-                "top_trigrams": [
-                    [
-                        "https doi org",
-                        14
-                    ],
-                    [
-                        "www nature com",
-                        12
-                    ],
-                    [
-                        "vol scientific reports",
-                        11
-                    ],
-                    [
-                        "scientific reports https",
-                        11
-                    ],
-                    [
-                        "reports https doi",
-                        11
-                    ]
-                ],
-                "noun_phrases": [
-                    "supplementary video",
-                    "rest api",
-                    "open source",
-                    "https doi",
-                    "doi org"
-                ]
-            },
-            "domain_terms": [
-                "exact",
-                "image",
-                "annotation",
-                "images",
-                "annotations",
-                "user",
-                "supplementary",
-                "video",
-                "sets",
-                "support"
-            ]
+            "text_path": "data/extracted\\upload_1_graph_chem_graph chem.txt",
+            "research_problem": "Addresses challenges in improving performance, accuracy, and efficiency in the domain.",
+            "methodology": "Utilizes Graph Neural Network architectures evaluated on benchmark datasets.",
+            "research_objectives": [
+                "Investigate: We evaluate graph neural networks for molecular property prediction."
+            ],
+            "evaluation_metrics": [
+                "AUC / ROC"
+            ],
+            "strengths": [
+                "Rigorous empirical comparison against baseline techniques.",
+                "Provides reproducible implementation insights for Presents empirical findings and comparative evaluation on ta..."
+            ],
+            "limitations": [
+                "Evaluation limited to selected benchmark datasets; broader cross-domain generalization requires further validation."
+            ],
+            "future_directions": [
+                "Scaling model capacity and validating across wider multicenter clinical or industrial benchmarks."
+            ],
+            "research_gaps": [
+                "Exploration across diverse real-world benchmarks remains open."
+            ],
+            "results": "Evaluated using AUC / ROC."
         }
     ],
     "cross_paper_analysis": {
-        "papers_analyzed": 2,
-        "common_themes": {
-            "common_terms": [
-                [
-                    "image",
-                    105
-                ],
-                [
-                    "exact",
-                    81
-                ],
-                [
-                    "annotation",
-                    74
-                ],
-                [
-                    "images",
-                    73
-                ],
-                [
-                    "annotations",
-                    57
-                ],
-                [
-                    "learning",
-                    39
-                ],
-                [
-                    "user",
-                    36
-                ],
-                [
-                    "supplementary",
-                    32
-                ],
-                [
-                    "video",
-                    31
-                ],
-                [
-                    "mobilenet",
-                    30
-                ],
-                [
-                    "sets",
-                    28
-                ],
-                [
-                    "support",
-                    28
-                ],
-                [
-                    "esophagitis",
-                    25
-                ],
-                [
-                    "rest",
-                    25
-                ],
-                [
-                    "googlenet",
-                    23
-                ],
-                [
-                    "like",
-                    23
-                ],
-                [
-                    "tier",
-                    23
-                ],
-                [
-                    "source",
-                    21
-                ],
-                [
-                    "class",
-                    19
-                ],
-                [
-                    "shap",
-                    18
-                ]
-            ],
-            "common_phrases": [
-                [
-                    "supplementary video",
-                    28
-                ],
-                [
-                    "rest api",
-                    25
-                ],
-                [
-                    "grad cam",
-                    16
-                ],
-                [
-                    "open source",
-                    16
-                ],
-                [
-                    "https doi",
-                    14
-                ],
-                [
-                    "doi org",
-                    14
-                ],
-                [
-                    "https doi org",
-                    14
-                ],
-                [
-                    "www nature com",
-                    12
-                ],
-                [
-                    "vol scientific reports",
-                    11
-                ],
-                [
-                    "scientific reports https",
-                    11
-                ],
-                [
-                    "reports https doi",
-                    11
-                ],
-                [
-                    "deep learning",
-                    10
-                ],
-                [
-                    "kvasir dataset",
-                    9
-                ],
-                [
-                    "mobilenet mobilenet",
-                    9
-                ],
-                [
-                    "googlenet resnet",
-                    8
-                ]
-            ],
-            "methodology_terms": [
-                [
-                    "learning",
-                    39
-                ],
-                [
-                    "deep",
-                    13
-                ],
-                [
-                    "dataset",
-                    13
-                ]
-            ],
-            "theme_coverage": 27
-        },
+        "papers_analyzed": 1,
+        "comparative_matrix": [
+            {
+                "paper_id": "upload_1_graph_chem",
+                "title": "graph chem",
+                "year": 2026,
+                "authors": "Uploaded Document",
+                "research_problem": "Addresses challenges in improving performance, accuracy, and efficiency in the domain.",
+                "methodology": "Utilizes Graph Neural Network architectures evaluated on benchmark datasets.",
+                "dataset": "Standard research dataset",
+                "algorithms": "Graph Neural Network",
+                "results": "Evaluated using AUC / ROC.",
+                "strengths": "Rigorous empirical comparison against baseline techniques.; Provides reproducible implementation insights for Presents empirical findings and comparative evaluation on ta...",
+                "limitations": "Evaluation limited to selected benchmark datasets; broader cross-domain generalization requires further validation.",
+                "research_gaps": "Exploration across diverse real-world benchmarks remains open."
+            }
+        ],
         "methodology_comparison": {
             "papers": [
                 {
-                    "paper_id": "c1ebdc7fe66a9f8ba274c53baa450c18d53b7f44",
-                    "title": "Deep-learning models in medical image analysis: Detection of esophagitis from the Kvasir Dataset",
+                    "paper_id": "upload_1_graph_chem",
+                    "title": "graph chem",
                     "has_methods_section": false,
-                    "methods_length": 0,
-                    "uses_deep_learning": false,
-                    "uses_transformer": false,
-                    "uses_cnn": false,
-                    "uses_rnn": false,
-                    "is_supervised": false,
-                    "is_unsupervised": false,
-                    "uses_pretrained": false
-                },
-                {
-                    "paper_id": "88ad68fd2a36916da11d6c74cd85761e5df317a6",
-                    "title": "EXACT: a collaboration toolset for algorithm-aided annotation of images with annotation version control",
-                    "has_methods_section": false,
-                    "methods_length": 0,
-                    "uses_deep_learning": false,
+                    "uses_deep_learning": true,
                     "uses_transformer": false,
                     "uses_cnn": false,
                     "uses_rnn": false,
@@ -532,47 +255,139 @@
                 }
             ],
             "summary": {
-                "total_papers": 2,
+                "total_papers": 1,
                 "with_methods_section": 0,
-                "using_deep_learning": 0,
+                "using_deep_learning": 1,
                 "using_transformer": 0,
                 "using_cnn": 0,
                 "using_rnn": 0,
                 "using_pretrained": 0
             }
         },
-        "findings_synthesis": {
-            "total_findings": 0,
-            "findings_by_paper": {
-                "c1ebdc7fe66a9f8ba274c53baa450c18d53b7f44": {
-                    "title": "Deep-learning models in medical image analysis: Detection of esophagitis from the Kvasir Dataset",
-                    "findings": [],
-                    "count": 0
-                },
-                "88ad68fd2a36916da11d6c74cd85761e5df317a6": {
-                    "title": "EXACT: a collaboration toolset for algorithm-aided annotation of images with annotation version control",
-                    "findings": [],
-                    "count": 0
-                }
-            },
-            "performance_findings": [],
-            "methodology_findings": [],
-            "contribution_findings": [],
-            "all_findings": []
+        "common_themes": {
+            "common_terms": [
+                [
+                    "neural",
+                    3
+                ],
+                [
+                    "networks",
+                    3
+                ],
+                [
+                    "graph",
+                    2
+                ],
+                [
+                    "molecular",
+                    2
+                ],
+                [
+                    "conclusion",
+                    2
+                ],
+                [
+                    "abstract",
+                    1
+                ],
+                [
+                    "evaluate",
+                    1
+                ],
+                [
+                    "property",
+                    1
+                ],
+                [
+                    "prediction",
+                    1
+                ],
+                [
+                    "introduction",
+                    1
+                ],
+                [
+                    "provide",
+                    1
+                ],
+                [
+                    "permutation",
+                    1
+                ],
+                [
+                    "invariant",
+                    1
+                ],
+                [
+                    "representations",
+                    1
+                ],
+                [
+                    "employ",
+                    1
+                ]
+            ],
+            "common_phrases": [
+                [
+                    "neural networks",
+                    3
+                ],
+                [
+                    "graph neural",
+                    2
+                ],
+                [
+                    "graph neural networks",
+                    2
+                ],
+                [
+                    "abstract evaluate",
+                    1
+                ],
+                [
+                    "evaluate graph",
+                    1
+                ],
+                [
+                    "networks molecular",
+                    1
+                ],
+                [
+                    "abstract evaluate graph",
+                    1
+                ],
+                [
+                    "evaluate graph neural",
+                    1
+                ],
+                [
+                    "neural networks molecular",
+                    1
+                ],
+                [
+                    "networks molecular property",
+                    1
+                ]
+            ],
+            "methodology_terms": [
+                [
+                    "neural",
+                    3
+                ]
+            ],
+            "theme_coverage": 15
         },
         "research_gaps": [
-            "Potential gap: Limited exploration of transformer-based approaches in this domain.",
-            "Potential gap: Transfer learning and pretrained models underutilized."
+            "Exploration across diverse real-world benchmarks remains open."
         ],
         "temporal_distribution": {
-            "2023": 1,
-            "2020": 1
+            "2026": 1
         },
         "citation_statistics": {
-            "average": 22.5,
-            "max": 41,
-            "min": 4,
-            "total": 45
+            "average": 0.0,
+            "max": 0,
+            "min": 0,
+            "total": 0
         }
     }
 }

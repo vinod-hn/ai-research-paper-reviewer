@@ -1,6 +1,5 @@
 # ============================================================
-# AI Paper Review System - Requirements
-# Complete dependencies for all milestones
+# AI Research Paper Reviewer - Production Requirements
 # ============================================================
 
 # =========================
@@ -10,6 +9,11 @@ semanticscholar>=0.8.0      # Semantic Scholar API client
 requests>=2.31.0            # HTTP library for PDF downloads
 python-dotenv>=1.0.0        # Environment variable management
 tqdm>=4.66.0                # Progress bars for downloads
+
+# =========================
+# AI & LLM INTEGRATION
+# =========================
+openai>=1.0.0               # OpenAI API client for research analysis & drafting
 
 # =========================
 # PDF & TEXT PROCESSING
@@ -30,7 +34,7 @@ pydantic>=2.5.0             # Input validation with strict schemas
 # =========================
 # UI
 # =========================
-gradio>=4.0.0               # Web UI for the application
+gradio>=4.0.0               # Web UI for research workspace
 
 # =========================
 # EXPORT FORMATS
@@ -43,12 +47,6 @@ reportlab>=4.0.0            # Export to PDF
 # =========================
 pytest>=8.0.0               # Test framework
 pytest-cov>=4.0.0           # Coverage reporting
-
-# =========================
-# OPTIONAL / FUTURE
-# =========================
-# langchain>=0.1.0          # For LLM chains (future)
-# openai>=1.0.0             # OpenAI API (future)
 
 # =========================
 # NETWORKING

@@ -65,11 +65,20 @@ Thumbs.db
 # Keep metadata but ignore large files
 data/pdfs/*.pdf
 data/logs/*.log
+data/logs/*.json
 
 # Exported files (regeneratable)
 data/literature_review.md
 data/literature_review.docx
 data/literature_review.pdf
+data/literature_review_export.docx
+data/literature_review_export.md
+
+# Local UI verification artifacts
+data/*_screenshot.png
+data/*_verified.png
+settings_before.png
+scripts/debug_tabs.py
 
 # Temporary files
 *.tmp

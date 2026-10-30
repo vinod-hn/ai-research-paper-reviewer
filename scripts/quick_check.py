@@ -1,116 +1,95 @@
 """
-Quick Setup Verification for Milestone 1
-=========================================
-Fast check to ensure everything is ready.
+Quick System Integrity & File Structure Verification
+====================================================
+Verifies that all required application files, directories, and modules are present.
 """
 
 import os
 import sys
 
+if hasattr(sys.stdout, 'reconfigure'):
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
+
+
 def check_files():
-    """Check if all required files exist."""
-    print("Checking files...")
+    """Check existence of all project core files."""
+    print("Verifying core project files:")
     files = {
-        "modules/search_papers.py": "Paper search module",
-        "modules/download_pdf.py": "PDF download module",
-        "scripts/prepare_dataset.py": "Dataset preparation",
-        "scripts/check_imports.py": "Dependency checker",
-        "scripts/demo_milestone1.py": "Complete demo",
-        "requirements.txt": "Dependencies list",
+        "run.py": "Main CLI and App Launcher",
+        "requirements.txt": "Package Dependencies",
         "README.md": "Documentation",
-        ".env.example": "Configuration template",
-        "MILESTONE1_SUMMARY.md": "Implementation summary"
+        ".env.example": "Configuration Template",
+        "modules/search_papers.py": "Paper Search & Ranking Module",
+        "modules/download_pdf.py": "PDF Downloader Module",
+        "modules/extract_text.py": "PDF Text Extraction Module",
+        "modules/analyze_text.py": "Academic Analysis & Matrix Module",
+        "modules/generate_draft.py": "Literature Review Generator",
+        "modules/critique_draft.py": "Critique & Revision Engine",
+        "modules/workflow.py": "Workflow Orchestration Engine",
+        "modules/security.py": "Input Validation & Security Guard",
+        "ui/app_modern.py": "Research Productivity UI",
+        "tests/test_all.py": "Automated Test Suite"
     }
     
-    all_good = True
-    for filepath, description in files.items():
-        if os.path.exists(filepath):
-            print(f"  ✅ {filepath}")
+    all_ok = True
+    for filepath, desc in files.items():
+        full_path = os.path.join(ROOT, filepath)
+        if os.path.exists(full_path):
+            print(f"  [OK]   {filepath:30} - {desc}")
         else:
-            print(f"  ❌ {filepath} - MISSING")
-            all_good = False
-    
-    return all_good
+            print(f"  [FAIL] {filepath:30} - MISSING ({desc})")
+            all_ok = False
+            
+    return all_ok
+
 
 def check_folders():
-    """Check if required folders exist."""
-    print("\nChecking folders...")
-    folders = ["data/pdfs", "data/metadata", "data/logs", "modules", "scripts"]
-    
+    """Check and ensure required directories exist."""
+    print("\nVerifying working storage directories:")
+    folders = [
+        "data",
+        "data/pdfs",
+        "data/extracted",
+        "data/metadata",
+        "data/logs",
+        "modules",
+        "ui",
+        "scripts",
+        "tests"
+    ]
     for folder in folders:
-        if os.path.exists(folder):
-            print(f"  ✅ {folder}")
+        full_path = os.path.join(ROOT, folder)
+        if os.path.exists(full_path):
+            print(f"  [OK]   {folder}")
         else:
-            print(f"  ⚠️  {folder} - creating...")
-            os.makedirs(folder, exist_ok=True)
+            print(f"  [MKDIR] Creating missing folder: {folder}")
+            os.makedirs(full_path, exist_ok=True)
 
-def check_imports():
-    """Check critical imports."""
-    print("\nChecking critical imports...")
-    
-    try:
-        import semanticscholar
-        print("  ✅ semanticscholar")
-    except:
-        print("  ❌ semanticscholar - run: pip install semanticscholar")
-        return False
-    
-    try:
-        import requests
-        print("  ✅ requests")
-    except:
-        print("  ❌ requests - run: pip install requests")
-        return False
-    
-    try:
-        import tqdm
-        print("  ✅ tqdm")
-    except:
-        print("  ❌ tqdm - run: pip install tqdm")
-        return False
-    
-    try:
-        from dotenv import load_dotenv
-        print("  ✅ python-dotenv")
-    except:
-        print("  ❌ python-dotenv - run: pip install python-dotenv")
-        return False
-    
-    return True
 
 def main():
-    print("="*60)
-    print(" MILESTONE 1 - QUICK VERIFICATION ")
-    print("="*60)
-    print()
+    print("=" * 65)
+    print("AI RESEARCH PAPER REVIEWER - INTEGRITY CHECK")
+    print("=" * 65 + "\n")
     
-    # Check Python version
-    print(f"Python: {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}")
-    if sys.version_info >= (3, 8):
-        print("  ✅ Compatible")
-    else:
-        print("  ⚠️  3.8+ recommended")
-    print()
-    
-    # Run checks
     files_ok = check_files()
     check_folders()
-    imports_ok = check_imports()
     
-    print()
-    print("="*60)
-    
-    if files_ok and imports_ok:
-        print(" ✅ MILESTONE 1 READY! ")
-        print()
-        print("Run: python scripts/prepare_dataset.py")
+    print("\n" + "=" * 65)
+    if files_ok:
+        print("[SUCCESS] PROJECT STRUCTURE VERIFIED: Ready to run.")
+        print("To launch the web interface:  python run.py --ui")
+        print("To run the test suite:       python run.py --test")
     else:
-        print(" ⚠️  SETUP INCOMPLETE ")
-        print()
-        if not imports_ok:
-            print("Run: pip install -r requirements.txt")
-    
-    print("="*60)
+        print("[WARNING] SOME PROJECT FILES ARE MISSING.")
+    print("=" * 65 + "\n")
+
 
 if __name__ == "__main__":
     main()

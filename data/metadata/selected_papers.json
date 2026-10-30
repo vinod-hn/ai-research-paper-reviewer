@@ -1,174 +1,39 @@
 {
-    "download_date": "2026-10-30 11:17:28",
-    "total_papers": 3,
+    "download_date": "2026-10-30 22:55:05",
+    "total_papers": 1,
     "papers": [
         {
-            "title": "Deep-learning models in medical image analysis: Detection of esophagitis from the Kvasir Dataset",
-            "abstract": "Early detection of esophagitis is important because this condition can progress to cancer if left untreated. However, the accuracies of different deep learning models in detecting esophagitis have yet to be compared. Thus, this study aimed to compare the accuracies of convolutional neural network models (GoogLeNet, ResNet-50, MobileNet V2, and MobileNet V3) in detecting esophagitis from the open Kvasir dataset of endoscopic images. Results showed that among the models, GoogLeNet achieved the highest F1-scores. Based on the average of true positive rate, MobileNet V3 predicted esophagitis more confidently than the other models. The results obtained using the models were also compared with those obtained using SHapley Additive exPlanations and Gradient-weighted Class Activation Mapping.",
-            "authors": [
-                "Kyoka Yoshiok",
-                "Kensuke Tanioka",
-                "S. Hiwa",
-                "Tomoyuki Hiroyasu"
-            ],
-            "year": 2023,
-            "citation_count": 4,
-            "influential_citation_count": 0,
-            "paper_id": "c1ebdc7fe66a9f8ba274c53baa450c18d53b7f44",
-            "url": "https://www.semanticscholar.org/paper/c1ebdc7fe66a9f8ba274c53baa450c18d53b7f44",
-            "pdf_url": "http://arxiv.org/pdf/2301.02390",
-            "publication_date": "2023-01-06T00:00:00",
-            "venue": "arXiv.org",
-            "publication_types": [
-                "JournalArticle"
-            ],
-            "external_ids": {
-                "ArXiv": "2301.02390",
-                "DBLP": "journals/corr/abs-2301-02390",
-                "DOI": "10.48550/arXiv.2301.02390",
-                "CorpusId": 255522609
-            },
-            "pdf_available": true,
-            "ranking_score": 0.7142,
-            "score_breakdown": {
-                "relevance": 1.0,
-                "recency": 0.73,
-                "citations": 0.233,
-                "author_score": 0.6,
-                "pdf_available": 1.0,
-                "total": 0.7142
-            },
-            "rank": 9,
-            "pdf_path": "data/pdfs\\c1ebdc7fe66a9f8ba274c53baa450c18d53b7f44_Deep-learning models in medical image analysis_ Detection of esophagitis from the Kvasir Dataset.pdf",
+            "paper_id": "upload_1_graph_chem",
+            "title": "graph chem",
+            "pdf_path": "C:\\Users\\vinod\\AppData\\Local\\Temp\\pytest-of-vinod\\pytest-14\\test_full_pipeline_upload_mode0\\graph_chem.pdf",
             "download_status": "success",
-            "download_date": "2026-10-30 11:17:06",
-            "text_path": "data/extracted\\c1ebdc7fe66a9f8ba274c53baa450c18d53b7f44_Deep-learning models in medical image analysis_ Detection of esophagitis from the Kvasir Dataset.txt",
+            "download_date": "2026-10-30 22:55:05",
+            "authors": [
+                "Uploaded Document"
+            ],
+            "year": 2026,
+            "citation_count": 0,
+            "pdf_available": true,
+            "text_path": "data/extracted\\upload_1_graph_chem_graph chem.txt",
             "extraction_status": "success",
-            "extraction_method": "pymupdf",
-            "extraction_date": "2026-10-30 11:17:28",
-            "text_characters": 19495,
+            "extraction_method": "pymupdf4llm",
+            "page_count": 1,
+            "is_scanned": false,
+            "extraction_date": "2026-10-30 22:55:05",
+            "text_characters": 390,
             "sections": {
-                "abstract": "Early detection of esophagitis is important because this condition can progress to cancer if left untreated. However, the accuracies of different deep learning models in detecting esophagitis have yet to be compared. Thus, this study aimed to compare the accuracies of convolutional neural network models (GoogLeNet, ResNet-50, MobileNet V2, and MobileNet V3) in detecting esophagitis from the open Kvasir dataset of endoscopic images. Results showed that among the models, GoogLeNet achieved the highest F1-scores. Based on the average of true positive rate, MobileNet V3 predicted esophagitis more conﬁdently than the other models. The results obtained using the models were also compared with those obtained using SHapley Additive exPlanations and Gradient-weighted Class Activation Mapping.",
-                "introduction": "With the development of artiﬁcial intelligence (AI), sev- eral studies have focused on the application of this technol- ogy in the medical ﬁeld. In gastroenterology, AI is used to detect inﬂammation, polyps, and stomach cancer and de- velop systems that can automatically determine the severity of symptoms [1] [2] [3] [4]. AI models are expected to im- prove diagnostic accuracy and reduce medical costs by pre- venting misdiagnosis by humans. Various deep learning and AI models, including deep learning convolutional neural network (CNN) models, have been proposed and used for medical image recognition and analysis. However, these models differ in accuracy, and com- paring this aspect is important to identify which model is suitable for a speciﬁc application in endoscopic imaging. The z-line is an anatomic landmark located posterior to the stomach and esophagus. Esophagitis is an inﬂammation of the esophagus that appears as a break in the esophageal mucosa relative to the z-line [5]. The z-line and esophagitis can be described as normal and diseased conditions, respec- tively. Early detection of esophagitis is necessary because this condition can cause complications (e.g., esophageal ul- cer, bleeding, and stricture) and progress to cancer if left untreated. Therefore, distinguishing between the z-line and esophagitis is necessary. However, this procedure is difﬁcult [6]. In addition, the accuracies of various models in detecting esophagitis have yet to be compared. Thus, this study aimed to compare the accuracies of sev- eral CNN models, including GoogLeNet [7], ResNet-50 [8], MobileNet V2 [9], and MobileNet V3 [10], in identifying z-lines and esophagitis in endoscopic images from the open Kvasir dataset. These models have received considerable at- tention in recent years after winning in the ImageNet Large Scale Visual Recognition Challenge (ILSVRC), a competi- tion using a large image recognition dataset. The results ob- † Kyoka Yoshioka is the presenter of this paper. tained by the four CNN models were compared. The training models were also compared with the explainable artiﬁcial in- telligence (XAI) methods Gradient-weighted Class Activa- tion Mapping (Grad-CAM) [11] and SHapley Additive ex- Planations (SHAP) [12].",
+                "abstract": "We evaluate graph neural networks for molecular property prediction.",
+                "introduction": "Graph neural networks provide permutation-invariant representations.\n\nMethods\nWe employ message passing neural networks with edge features.",
                 "methods": null,
                 "results": null,
-                "conclusion": "We compared the accuracies of CNN models, including GoogLeNet, ResNet-50, MobileNet V2, and MobileNet V3, in identifying z-line and esophagitis in endoscopic images from the open Kvasir dataset. Among the four models, GoogLeNet had the highest F1-score, and MobileNet V3 had the highest average TP rate. These results suggest that GoogLeNet performs better than state-of-the-art CNN mod- els in medical image recognition. In addition, MoblieNet V3 is a cost-effective model because of its low memory and short training time. Each model was analyzed and compared with Grad-CAM, and SHAP. Other models, datasets, and model analyses are warranted for veriﬁcation."
+                "discussion": null,
+                "conclusion": "In conclusion, relational inductive biases improve molecular chemistry predictions.",
+                "references": null
             },
             "sections_quality": {
                 "sections_found": 3,
                 "total_sections": 5,
                 "quality_score": 0.6
-            },
-            "key_findings": []
-        },
-        {
-            "title": "Data efficient deep learning for medical image analysis: A survey",
-            "abstract": "The rapid evolution of deep learning has significantly advanced the field of medical image analysis. However, despite these achievements, the further enhancement of deep learning models for medical image analysis faces a significant challenge due to the scarcity of large, well-annotated datasets. To address this issue, recent years have witnessed a growing emphasis on the development of data-efficient deep learning methods. This paper conducts a thorough review of data-efficient deep learning methods for medical image analysis. To this end, we categorize these methods based on the level of supervision they rely on, encompassing categories such as no supervision, inexact supervision, incomplete supervision, inaccurate supervision, and only limited supervision. We further divide these categories into finer subcategories. For example, we categorize inexact supervision into multiple instance learning and learning with weak annotations. Similarly, we categorize incomplete supervision into semi-supervised learning, active learning, and domain-adaptive learning and so on. Furthermore, we systematically summarize commonly used datasets for data efficient deep learning in medical image analysis and investigate future research directions to conclude this survey.",
-            "authors": [
-                "Suruchi Kumari",
-                "Pravendra Singh"
-            ],
-            "year": 2023,
-            "citation_count": 22,
-            "influential_citation_count": 0,
-            "paper_id": "f4708d1bf40efc655a58861c9ced43ee3fb4ba5e",
-            "url": "https://www.semanticscholar.org/paper/f4708d1bf40efc655a58861c9ced43ee3fb4ba5e",
-            "pdf_url": "https://arxiv.org/pdf/2310.06557",
-            "publication_date": "2023-10-10T00:00:00",
-            "venue": "arXiv.org",
-            "publication_types": [
-                "JournalArticle",
-                "Review"
-            ],
-            "external_ids": {
-                "ArXiv": "2310.06557",
-                "DBLP": "journals/corr/abs-2310-06557",
-                "DOI": "10.48550/arXiv.2310.06557",
-                "CorpusId": 263830273
-            },
-            "pdf_available": true,
-            "ranking_score": 0.7595,
-            "score_breakdown": {
-                "relevance": 1.0,
-                "recency": 0.73,
-                "citations": 0.4538,
-                "author_score": 0.5,
-                "pdf_available": 1.0,
-                "total": 0.7595
-            },
-            "rank": 6,
-            "pdf_path": "data/pdfs\\f4708d1bf40efc655a58861c9ced43ee3fb4ba5e_Data efficient deep learning for medical image analysis_ A survey.pdf",
-            "download_status": "success",
-            "download_date": "2026-10-30 11:17:06",
-            "text_path": null,
-            "extraction_status": "failed",
-            "extraction_error": "All extraction methods failed for data/pdfs\\f4708d1bf40efc655a58861c9ced43ee3fb4ba5e_Data efficient deep learning for medical image analysis_ A survey.pdf: Function 'to_text' is only available in PyMuPDF-Layout mode",
-            "sections": {},
-            "key_findings": []
-        },
-        {
-            "title": "EXACT: a collaboration toolset for algorithm-aided annotation of images with annotation version control",
-            "abstract": "In many research areas, scientific progress is accelerated by multidisciplinary access to image data and their interdisciplinary annotation. However, keeping track of these annotations to ensure a high-quality multi-purpose data set is a challenging and labour intensive task. We developed the open-source online platform EXACT (EXpert Algorithm Collaboration Tool) that enables the collaborative interdisciplinary analysis of images from different domains online and offline. EXACT supports multi-gigapixel medical whole slide images as well as image series with thousands of images. The software utilises a flexible plugin system that can be adapted to diverse applications such as counting mitotic figures with a screening mode, finding false annotations on a novel validation view, or using the latest deep learning image analysis technologies. This is combined with a version control system which makes it possible to keep track of changes in the data sets and, for example, to link the results of deep learning experiments to specific data set versions. EXACT is freely available and has already been successfully applied to a broad range of annotation tasks, including highly diverse applications like deep learning supported cytology scoring, interdisciplinary multi-centre whole slide image tumour annotation, and highly specialised whale sound spectroscopy clustering.",
-            "authors": [
-                "C. Marzahl",
-                "M. Aubreville",
-                "C. Bertram",
-                "Jennifer K. Maier",
-                "Christian Bergler",
-                "Christine Kröger",
-                "J. Voigt",
-                "Katharina Breininger",
-                "R. Klopfleisch",
-                "A. Maier"
-            ],
-            "year": 2020,
-            "citation_count": 41,
-            "influential_citation_count": 1,
-            "paper_id": "88ad68fd2a36916da11d6c74cd85761e5df317a6",
-            "url": "https://www.semanticscholar.org/paper/88ad68fd2a36916da11d6c74cd85761e5df317a6",
-            "pdf_url": "https://www.nature.com/articles/s41598-021-83827-4.pdf",
-            "publication_date": "2020-04-30T00:00:00",
-            "venue": "Scientific Reports",
-            "publication_types": [
-                "JournalArticle"
-            ],
-            "external_ids": {
-                "ArXiv": "2004.14595",
-                "PubMedCentral": "7902667",
-                "DOI": "10.1038/s41598-021-83827-4",
-                "CorpusId": 232039694,
-                "PubMed": "33623058"
-            },
-            "pdf_available": true,
-            "ranking_score": 0.5623,
-            "score_breakdown": {
-                "relevance": 0.4,
-                "recency": 0.46,
-                "citations": 0.541,
-                "author_score": 0.65,
-                "pdf_available": 1.0,
-                "total": 0.5623
-            },
-            "rank": 13,
-            "pdf_path": "data/pdfs\\88ad68fd2a36916da11d6c74cd85761e5df317a6_EXACT_ a collaboration toolset for algorithm-aided annotation of images with annotation version control.pdf",
-            "download_status": "success",
-            "download_date": "2026-10-30 11:17:06",
-            "text_path": "data/extracted\\88ad68fd2a36916da11d6c74cd85761e5df317a6_EXACT_ a collaboration toolset for algorithm-aided annotation of images with annotation version control.txt",
-            "extraction_status": "success",
-            "extraction_method": "pymupdf",
-            "extraction_date": "2026-10-30 11:17:28",
-            "text_characters": 50006,
-            "sections": {
-                "abstract": null,
-                "introduction": null,
-                "methods": null,
-                "results": null,
-                "conclusion": null
-            },
-            "sections_quality": {
-                "sections_found": 0,
-                "total_sections": 5,
-                "quality_score": 0.0
             },
             "key_findings": []
         }

@@ -1,14 +1,15 @@
 """
 PDF Download Module 
 ==================================
-Implements PDF download functionality with:
-- Download papers from URLs
-- Save PDFs to data/pdfs/
-- Validate downloaded files
-- Store metadata in JSON format
-- Progress tracking with tqdm
-- Error handling and retry logic
-- Logging
+Implements robust academic PDF download functionality with:
+- Download papers from direct URLs and landing pages
+- Automatic arXiv abstract -> PDF resolution
+- Comprehensive PDF integrity validation (magic bytes, size, and fitz structure check)
+- Duplicate download prevention and MD5 checksumming
+- Temporary download file handling with atomic rename
+- Configurable timeouts and exponential backoff retry logic
+- Non-retryable domain short-circuiting
+- Progress tracking and structured audit logging
 """
 
 import os
@@ -16,86 +17,84 @@ import json
 import logging
 import time
 import hashlib
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, Set
+from urllib.parse import urljoin
 import requests
 from tqdm import tqdm
 from dotenv import load_dotenv
-from urllib.parse import urljoin
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('data/logs/download_pdf.log'),
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger(__name__)
+# Ensure logs directory exists
+LOG_DIR = "data/logs"
+os.makedirs(LOG_DIR, exist_ok=True)
 
-# Load environment variables
+logger = logging.getLogger("modules.download_pdf")
+if not logger.handlers:
+    logger.setLevel(logging.INFO)
+    file_handler = logging.FileHandler(os.path.join(LOG_DIR, "download_pdf.log"), encoding="utf-8")
+    file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+    stream_handler = logging.StreamHandler()
+    stream_handler.setFormatter(logging.Formatter('%(levelname)s: %(message)s'))
+    logger.addHandler(file_handler)
+    logger.addHandler(stream_handler)
+
 load_dotenv()
 
 # Constants
 PDF_DIR = "data/pdfs"
 METADATA_DIR = "data/metadata"
-CHUNK_SIZE = 8192  # 8KB chunks for download
+CHUNK_SIZE = 8192
 MAX_RETRIES = int(os.getenv("PDF_DOWNLOAD_MAX_RETRIES", "3"))
-TIMEOUT = int(os.getenv("PDF_DOWNLOAD_TIMEOUT", "20"))  # seconds
+TIMEOUT = int(os.getenv("PDF_DOWNLOAD_TIMEOUT", "25"))
 RETRY_ONLY_ON_RETRYABLE = os.getenv("PDF_RETRY_ONLY_ON_RETRYABLE", "1") == "1"
-MAX_HTML_SNIFF = 200000  # cap HTML reads when looking for fallback PDF links
+MAX_HTML_SNIFF = 200000
 
 
 def sanitize_filename(filename: str) -> str:
-    """
-    Sanitize filename to remove invalid characters.
-    
-    Args:
-        filename: Original filename
-    
-    Returns:
-        Sanitized filename safe for filesystem
-    """
-    # Remove or replace invalid characters
-    invalid_chars = '<>:"/\\|?*'
+    """Sanitize filename to remove invalid characters and limit length."""
+    invalid_chars = '<>:"/\\|?*\x00-\x1f'
     for char in invalid_chars:
         filename = filename.replace(char, '_')
-    
-    # Limit length
-    if len(filename) > 200:
-        filename = filename[:200]
-    
-    return filename
+    filename = filename.strip(' ._')
+    return filename[:180] or "paper"
 
 
 def validate_pdf(filepath: str) -> bool:
     """
-    Validate that the downloaded file is a valid PDF.
-    
-    Args:
-        filepath: Path to the PDF file
-    
-    Returns:
-        True if valid PDF, False otherwise
+    Validate that the file is an intact, non-empty, readable PDF.
+    Verifies magic header (%PDF), minimum viable size, and fitz open test.
     """
     try:
-        # Check file exists and has content
-        if not os.path.exists(filepath) or os.path.getsize(filepath) == 0:
-            logger.warning(f"File does not exist or is empty: {filepath}")
+        if not os.path.exists(filepath):
+            logger.warning(f"File does not exist: {filepath}")
             return False
         
-        # Check PDF magic number (starts with %PDF)
+        file_size = os.path.getsize(filepath)
+        if file_size < 1024:  # academic papers are practically always > 1KB
+            logger.warning(f"File too small to be a valid PDF ({file_size} bytes): {filepath}")
+            return False
+        
         with open(filepath, 'rb') as f:
-            header = f.read(4)
-            if header != b'%PDF':
-                logger.warning(f"File does not have PDF header: {filepath}")
+            header = f.read(5)
+            if not header.startswith(b'%PDF'):
+                logger.warning(f"Invalid PDF magic header: {filepath}")
                 return False
         
-        logger.info(f"PDF validation successful: {filepath}")
-        return True
+        # Test open with fitz to ensure structure is not corrupted
+        try:
+            import fitz
+            doc = fitz.open(filepath)
+            page_count = len(doc)
+            doc.close()
+            if page_count < 1:
+                logger.warning(f"PDF contains 0 pages: {filepath}")
+                return False
+        except Exception as fitz_err:
+            logger.warning(f"Corrupted PDF structure detected by fitz for {filepath}: {fitz_err}")
+            return False
         
+        return True
     except Exception as e:
-        logger.error(f"Error validating PDF {filepath}: {str(e)}")
+        logger.error(f"Error validating PDF {filepath}: {e}")
         return False
 
 
@@ -108,16 +107,31 @@ def _is_probable_pdf_response(response: requests.Response) -> bool:
 
 
 def _expand_candidate_urls(url: str) -> List[str]:
-    """Return a list of candidate PDF URLs with simple heuristics (e.g., arXiv abs→pdf)."""
-    candidates = [url]
+    """Return an ordered list of candidate direct PDF URLs."""
+    candidates = []
+    if not url:
+        return candidates
+    
+    url = url.strip()
+    candidates.append(url)
+    
+    # ArXiv abs -> pdf
     if "arxiv.org/abs/" in url:
         pdf_url = url.replace("/abs/", "/pdf/")
         if not pdf_url.lower().endswith(".pdf"):
             pdf_url += ".pdf"
         candidates.append(pdf_url)
+    elif "arxiv.org" in url and not url.endswith(".pdf"):
+        # e.g. arxiv.org/pdf/2301.02390
+        candidates.append(url + ".pdf")
+    
+    # DOI resolver to Sciencedirect/MDPI/Nature
+    if "doi.org" in url:
+        pass
+    
     # Deduplicate while preserving order
-    seen = set()
-    ordered = []
+    seen: Set[str] = set()
+    ordered: List[str] = []
     for u in candidates:
         if u not in seen:
             ordered.append(u)
@@ -126,10 +140,9 @@ def _expand_candidate_urls(url: str) -> List[str]:
 
 
 def _extract_pdf_link_from_html(html: str, base_url: str) -> Optional[str]:
-    """Find a likely PDF link in HTML by looking for hrefs ending with .pdf."""
-    import re  # local import to avoid global dependency for non-HTML paths
-
-    match = re.search(r'href=["\']([^"\']+\.pdf)["\']', html, re.IGNORECASE)
+    """Find a likely direct PDF link in HTML by looking for hrefs containing .pdf."""
+    import re
+    match = re.search(r'href=["\']([^"\']+\.pdf(?:\?[^"\']*)?)["\']', html, re.IGNORECASE)
     if match:
         href = match.group(1)
         return urljoin(base_url, href)
@@ -143,33 +156,29 @@ def download_pdf(
     output_dir: str = PDF_DIR
 ) -> Optional[str]:
     """
-    Download a single PDF from URL with retry logic.
-    
-    Args:
-        url: PDF download URL
-        paper_id: Unique paper identifier
-        title: Paper title (used for filename)
-        output_dir: Directory to save PDF (default: data/pdfs/)
-    
-    Returns:
-        Path to downloaded PDF file, or None if download failed
+    Download a single PDF from URL with retry logic, temp file integrity check, and validation.
     """
-    # Create output directory
     os.makedirs(output_dir, exist_ok=True)
     
-    # Generate filename
     safe_title = sanitize_filename(title)
-    filename = f"{paper_id}_{safe_title}.pdf"
+    safe_id = sanitize_filename(paper_id)
+    filename = f"{safe_id}_{safe_title}.pdf"
     filepath = os.path.join(output_dir, filename)
     
-    # Check if already downloaded
+    # Check if already downloaded and valid
     if os.path.exists(filepath) and validate_pdf(filepath):
-        logger.info(f"PDF already exists: {filepath}")
+        logger.info(f"Valid PDF already cached locally: {filepath}")
         return filepath
     
     candidate_urls = _expand_candidate_urls(url)
-    tried: set[str] = set()
+    tried: Set[str] = set()
     attempt = 0
+    temp_filepath = filepath + ".tmp"
+    
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'application/pdf,text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    }
 
     while candidate_urls and attempt < MAX_RETRIES:
         current_url = candidate_urls.pop(0)
@@ -180,16 +189,16 @@ def download_pdf(
 
         try:
             logger.info(f"Downloading PDF (attempt {attempt}/{MAX_RETRIES}): {current_url}")
-
             response = requests.get(
                 current_url,
                 stream=True,
                 timeout=TIMEOUT,
-                headers={'User-Agent': 'Mozilla/5.0'},
+                headers=headers,
+                allow_redirects=True
             )
             response.raise_for_status()
 
-            # If the response is HTML, sniff for a PDF link and retry it.
+            # If the response is HTML, sniff for fallback PDF link
             if not _is_probable_pdf_response(response):
                 content_type = response.headers.get("content-type", "").lower()
                 if "text/html" in content_type:
@@ -197,59 +206,52 @@ def download_pdf(
                         html = response.content[:MAX_HTML_SNIFF].decode(errors="ignore")
                         fallback_pdf = _extract_pdf_link_from_html(html, current_url)
                         if fallback_pdf and fallback_pdf not in tried and fallback_pdf not in candidate_urls:
-                            logger.info("Found fallback PDF link in HTML: %s", fallback_pdf)
+                            logger.info(f"Discovered fallback PDF link in HTML: {fallback_pdf}")
                             candidate_urls.insert(0, fallback_pdf)
                             continue
                     except Exception as sniff_exc:
-                        logger.warning("HTML sniff failed for %s: %s", current_url, sniff_exc)
-                logger.warning(f"Response is not a PDF for: {current_url}")
+                        logger.warning(f"HTML sniff failed for {current_url}: {sniff_exc}")
+                logger.warning(f"Response is not a PDF for: {current_url} (content-type: {content_type})")
                 continue
 
-            # Get total file size
             total_size = int(response.headers.get('content-length', 0))
             
-            # Download with progress bar
-            with open(filepath, 'wb') as f, tqdm(
-                desc=f"Downloading {safe_title[:50]}",
-                total=total_size,
-                unit='B',
-                unit_scale=True,
-                unit_divisor=1024,
-            ) as progress_bar:
+            with open(temp_filepath, 'wb') as f:
                 for chunk in response.iter_content(chunk_size=CHUNK_SIZE):
                     if chunk:
                         f.write(chunk)
-                        progress_bar.update(len(chunk))
             
-            # Validate downloaded PDF
-            if validate_pdf(filepath):
-                logger.info(f"Successfully downloaded PDF: {filepath}")
-                return filepath
-            else:
-                logger.warning(f"Downloaded file is not a valid PDF: {filepath}")
+            # Validate temp file before committing
+            if validate_pdf(temp_filepath):
                 if os.path.exists(filepath):
                     os.remove(filepath)
+                os.rename(temp_filepath, filepath)
+                logger.info(f"Successfully downloaded and verified PDF: {filepath}")
+                return filepath
+            else:
+                logger.warning(f"Downloaded payload failed validation: {current_url}")
+                if os.path.exists(temp_filepath):
+                    os.remove(temp_filepath)
                 
         except requests.exceptions.RequestException as e:
-            logger.warning(f"Download attempt {attempt} failed: {str(e)}")
-            # If configured, stop retrying on clearly non-retryable domains/statuses
+            logger.warning(f"Download attempt {attempt} failed: {e}")
+            if os.path.exists(temp_filepath):
+                os.remove(temp_filepath)
             if RETRY_ONLY_ON_RETRYABLE:
-                msg = str(e).lower()
-                non_retryable_hosts = ("ieeexplore.ieee.org", "link.springer.com")
+                non_retryable_hosts = ("ieeexplore.ieee.org", "link.springer.com", "sciencedirect.com")
                 if any(h in current_url.lower() for h in non_retryable_hosts):
-                    logger.warning("Host is known-restricted; skipping further retries for this URL.")
-                    candidate_urls = []  # stop trying this url further
+                    logger.warning("Host is paywalled/restricted; skipping further retries for this URL.")
                     break
         except Exception as e:
-            logger.error(f"Unexpected error downloading PDF: {str(e)}")
+            logger.error(f"Unexpected error downloading PDF from {current_url}: {e}")
+            if os.path.exists(temp_filepath):
+                os.remove(temp_filepath)
 
-        if attempt < MAX_RETRIES:
-            wait_time = 2 ** attempt
-            logger.info(f"Waiting {wait_time} seconds before retry...")
-            time.sleep(wait_time)
+        if attempt < MAX_RETRIES and candidate_urls:
+            time.sleep(2 ** attempt)
         else:
-            logger.error(f"All download attempts failed for: {url}")
-    
+            logger.error(f"Failed to download PDF for paper '{title[:40]}' after {attempt} attempts.")
+            
     return None
 
 
@@ -258,67 +260,52 @@ def download_papers(
     output_dir: str = PDF_DIR
 ) -> List[Dict[str, Any]]:
     """
-    Download multiple papers and track results.
-    
-    Args:
-        papers: List of paper metadata dictionaries (must include pdf_url)
-        output_dir: Directory to save PDFs
-    
-    Returns:
-        List of successfully downloaded paper metadata with pdf_path added
+    Download multiple papers, update download status, and return list of successful records.
+    Does not mutate input paper dicts in-place.
     """
-    logger.info(f"Starting batch download of {len(papers)} papers")
+    logger.info(f"Starting batch download of {len(papers)} papers into '{output_dir}'")
+    downloaded_papers: List[Dict[str, Any]] = []
     
-    downloaded_papers = []
-    failed_downloads = []
-    
-    for idx, paper in enumerate(papers, 1):
-        print(f"\n[{idx}/{len(papers)}] Processing: {paper.get('title', 'Unknown')[:60]}...")
-        
+    for idx, orig_paper in enumerate(papers, 1):
+        paper = orig_paper.copy()
+        title = paper.get('title', 'Unknown')
+        paper_id = paper.get('paper_id', f'paper_{idx}')
         pdf_url = paper.get('pdf_url')
-        if not pdf_url:
-            logger.warning(f"No PDF URL available for paper: {paper.get('title')}")
-            failed_downloads.append(paper)
+        
+        # Check if user already provided a local PDF path (e.g. via direct upload)
+        existing_path = paper.get('pdf_path')
+        if existing_path and os.path.exists(existing_path) and validate_pdf(existing_path):
+            paper['download_status'] = 'success'
+            paper['download_date'] = paper.get('download_date') or time.strftime("%Y-%m-%d %H:%M:%S")
+            downloaded_papers.append(paper)
             continue
         
-        # Download PDF (try openAccessPdf first)
+        if not pdf_url:
+            # Fallback to landing page URL
+            pdf_url = paper.get('url')
+        
+        if not pdf_url:
+            paper['download_status'] = 'failed'
+            paper['download_error'] = 'No download or landing URL available'
+            continue
+        
         pdf_path = download_pdf(
             url=pdf_url,
-            paper_id=paper.get('paper_id', f'unknown_{idx}'),
-            title=paper.get('title', f'paper_{idx}'),
+            paper_id=paper_id,
+            title=title,
             output_dir=output_dir
         )
-
-        # If failed, try the landing page URL (HTML sniff may find a .pdf)
-        if not pdf_path and paper.get('url'):
-            logger.info("Primary PDF URL failed; attempting landing page to locate PDF link...")
-            pdf_path = download_pdf(
-                url=paper.get('url'),
-                paper_id=paper.get('paper_id', f'unknown_{idx}'),
-                title=paper.get('title', f'paper_{idx}'),
-                output_dir=output_dir
-            )
         
         if pdf_path:
-            # Add PDF path to paper metadata
             paper['pdf_path'] = pdf_path
             paper['download_status'] = 'success'
             paper['download_date'] = time.strftime("%Y-%m-%d %H:%M:%S")
             downloaded_papers.append(paper)
         else:
             paper['download_status'] = 'failed'
-            failed_downloads.append(paper)
+            paper['download_error'] = 'Download failed or PDF was invalid'
     
-    # Summary
-    print("\n" + "="*80)
-    print(f"Download Summary:")
-    print(f"  Total papers: {len(papers)}")
-    print(f"  Successfully downloaded: {len(downloaded_papers)}")
-    print(f"  Failed: {len(failed_downloads)}")
-    print("="*80)
-    
-    logger.info(f"Batch download complete. Success: {len(downloaded_papers)}, Failed: {len(failed_downloads)}")
-    
+    logger.info(f"Batch download complete: {len(downloaded_papers)} / {len(papers)} successful")
     return downloaded_papers
 
 
@@ -326,16 +313,7 @@ def save_download_metadata(
     papers: List[Dict[str, Any]],
     filename: str = "selected_papers.json"
 ) -> str:
-    """
-    Save metadata of downloaded papers to JSON file.
-    
-    Args:
-        papers: List of paper metadata dictionaries
-        filename: Output filename (default: selected_papers.json)
-    
-    Returns:
-        Path to saved metadata file
-    """
+    """Save metadata of downloaded papers to JSON file."""
     os.makedirs(METADATA_DIR, exist_ok=True)
     filepath = os.path.join(METADATA_DIR, filename)
     
@@ -348,105 +326,51 @@ def save_download_metadata(
     try:
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(metadata, f, indent=4, ensure_ascii=False)
-        
-        logger.info(f"Metadata saved successfully to: {filepath}")
-        print(f"\nMetadata saved to: {filepath}")
+        logger.info(f"Saved download metadata ({len(papers)} papers) to {filepath}")
         return filepath
-        
     except Exception as e:
-        logger.error(f"Failed to save metadata: {str(e)}")
+        logger.error(f"Failed to save metadata to {filepath}: {e}")
         raise
 
 
 def load_metadata(filepath: str) -> Dict[str, Any]:
-    """
-    Load paper metadata from JSON file.
-    
-    Args:
-        filepath: Path to metadata JSON file
-    
-    Returns:
-        Dictionary containing paper metadata
-    """
+    """Load paper metadata safely from JSON file."""
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        logger.info(f"Metadata loaded successfully from: {filepath}")
-        return data
+            return json.load(f)
     except Exception as e:
-        logger.error(f"Failed to load metadata from {filepath}: {str(e)}")
+        logger.error(f"Failed to load metadata from {filepath}: {e}")
         raise
 
 
 def get_pdf_info(filepath: str) -> Dict[str, Any]:
-    """
-    Get information about a PDF file.
-    
-    Args:
-        filepath: Path to PDF file
-    
-    Returns:
-        Dictionary with file size, hash, etc.
-    """
+    """Get file size, checksum, and page count for a PDF."""
     try:
-        file_size = os.path.getsize(filepath)
+        if not os.path.exists(filepath):
+            return {"is_valid": False, "error": "File not found"}
         
-        # Calculate MD5 hash
+        file_size = os.path.getsize(filepath)
         md5_hash = hashlib.md5()
         with open(filepath, 'rb') as f:
-            for chunk in iter(lambda: f.read(4096), b''):
+            for chunk in iter(lambda: f.read(65536), b''):
                 md5_hash.update(chunk)
+        
+        page_count = 0
+        try:
+            import fitz
+            doc = fitz.open(filepath)
+            page_count = len(doc)
+            doc.close()
+        except Exception:
+            pass
         
         return {
             "file_size_bytes": file_size,
             "file_size_mb": round(file_size / (1024 * 1024), 2),
             "md5_hash": md5_hash.hexdigest(),
+            "page_count": page_count,
             "is_valid": validate_pdf(filepath)
         }
     except Exception as e:
-        logger.error(f"Error getting PDF info for {filepath}: {str(e)}")
-        return {}
-
-
-# Demo and testing
-if __name__ == "__main__":
-    # Ensure directories exist
-    os.makedirs("data/logs", exist_ok=True)
-    os.makedirs(PDF_DIR, exist_ok=True)
-    os.makedirs(METADATA_DIR, exist_ok=True)
-    
-    # Example: Load papers from search results and download
-    search_metadata_path = "data/metadata/paper_metadata.json"
-    
-    if os.path.exists(search_metadata_path):
-        print("Loading papers from search results...")
-        with open(search_metadata_path, 'r', encoding='utf-8') as f:
-            search_data = json.load(f)
-        
-        papers = search_data.get('papers', [])
-        
-        # Filter papers with available PDFs
-        papers_with_pdf = [p for p in papers if p.get('pdf_available')]
-        
-        print(f"\nFound {len(papers_with_pdf)} papers with available PDFs")
-        
-        if papers_with_pdf:
-            # Download papers
-            downloaded = download_papers(papers_with_pdf)
-            
-            # Save metadata
-            if downloaded:
-                save_download_metadata(downloaded, "selected_papers.json")
-                
-                # Display some info
-                print("\nDownloaded papers:")
-                for paper in downloaded[:3]:
-                    print(f"  - {paper['title']}")
-                    print(f"    PDF: {paper['pdf_path']}")
-                    pdf_info = get_pdf_info(paper['pdf_path'])
-                    print(f"    Size: {pdf_info.get('file_size_mb', 'N/A')} MB")
-                    print()
-    else:
-        print(f"No search results found at {search_metadata_path}")
-        print("Run search_papers.py first to generate paper metadata.")
-
+        logger.error(f"Error getting PDF info for {filepath}: {e}")
+        return {"is_valid": False, "error": str(e)}

@@ -1,0 +1,14 @@
+Abstract
+We evaluate graph neural networks for molecular property prediction.
+
+Introduction
+Graph neural networks provide permutation-invariant representations.
+
+Methods
+We employ message passing neural networks with edge features.
+
+Results
+Our model achieves an ROC-AUC of 0.89 on MoleculeNet.
+
+Conclusion
+In conclusion, relational inductive biases improve molecular chemistry predictions.
